@@ -1,0 +1,2 @@
+docs/lp-corpus-data/*.db filter=lfs diff=lfs merge=lfs -text
+docs/lp-corpus-data/*.jsonl filter=lfs diff=lfs merge=lfs -text

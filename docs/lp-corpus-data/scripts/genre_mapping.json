@@ -1,0 +1,125 @@
+{
+  "comment": "ジャンル × SANKOU!カテゴリ × 収集目標数",
+  "mapping": {
+    "beauty-cosmetics": {
+      "sankou_categories": ["beauty-cosmetics-caregoods", "salon"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "美容・化粧品・コスメ・ケア用品・エステサロン"
+    },
+    "medical-clinic": {
+      "sankou_categories": ["hospital-clinic-medicalcare-dentist"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "美容医療クリニック・歯科・医療機関"
+    },
+    "fashion": {
+      "sankou_categories": ["fashion-accessories-jewelry"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "ファッション・アクセサリー・ジュエリー"
+    },
+    "food-beverage": {
+      "sankou_categories": ["cooking-food-beverage", "cafe-restaurant-tavern"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "飲食・料理・食品・カフェ・レストラン"
+    },
+    "school-education": {
+      "sankou_categories": ["school-education", "adult-school"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "学校・教育・スクール・英会話"
+    },
+    "real-estate": {
+      "sankou_categories": ["architecture-construction-realestate-home-garden"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "建築・不動産・リフォーム"
+    },
+    "recruit-job": {
+      "sankou_categories": ["joboffer-matching", "recruit"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "求人・採用・マッチング"
+    },
+    "travel-hotel": {
+      "sankou_categories": ["travel-sightseeing-region", "hotel"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "旅行・観光・ホテル"
+    },
+    "finance-insurance": {
+      "sankou_categories": ["bank-insurance-finance-law"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "銀行・保険・金融・法律"
+    },
+    "saas-service": {
+      "sankou_categories": ["service-application", "computer-web"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "SaaS・ITサービス・アプリ"
+    },
+    "brand-corporate": {
+      "sankou_categories": ["brandsite", "corporatesite"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "ブランドサイト・コーポレートサイト"
+    },
+    "ec-shop": {
+      "sankou_categories": ["ec-onlineshop"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "ECサイト・オンラインショップ"
+    },
+    "life-goods": {
+      "sankou_categories": ["life-goods-stationery-furniture", "appliance-supplies"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "生活用品・文具・家具・家電"
+    },
+    "campaign-special": {
+      "sankou_categories": ["campaign-event-special"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "キャンペーン・イベント・特設"
+    },
+    "wellness-health": {
+      "sankou_categories": ["wellness"],
+      "target_count": 500,
+      "tier": "S",
+      "description": "ウェルネス・健康"
+    },
+    "car-vehicle": {
+      "sankou_categories": ["car-bike-vehicle-airplane"],
+      "target_count": 100,
+      "tier": "A",
+      "description": "車・バイク・乗り物"
+    },
+    "life-infra": {
+      "sankou_categories": ["life-infrastructure-industry"],
+      "target_count": 100,
+      "tier": "A",
+      "description": "インフラ・産業"
+    },
+    "portfolio-agency": {
+      "sankou_categories": ["production-agency-portfolio"],
+      "target_count": 100,
+      "tier": "A",
+      "description": "制作会社・代理店・ポートフォリオ"
+    },
+    "publication": {
+      "sankou_categories": ["publication"],
+      "target_count": 100,
+      "tier": "A",
+      "description": "出版・メディア"
+    },
+    "experience": {
+      "sankou_categories": ["experience-interact-play"],
+      "target_count": 100,
+      "tier": "A",
+      "description": "体験・インタラクティブ"
+    }
+  }
+}
