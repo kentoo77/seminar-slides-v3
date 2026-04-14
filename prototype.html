@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Design System v3 — Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CSS DESIGN SYSTEM v3
+           Clean School — White + Black + Orange
+           日本LP参照ベース
+           ======================================== */
+
+        :root {
+            /* Clean School palette */
+            --primary: #0f0f10;
+            --accent: #e74f00;
+            --accent-light: rgba(231, 79, 0, 0.08);
+            --accent-mid: rgba(231, 79, 0, 0.15);
+            --bg-white: #ffffff;
+            --bg-light: #f5f5f5;
+            --bg-dark: #0f0f10;
+            --text-primary: #222222;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --text-white: #f5f5f5;
+            --text-white-sub: rgba(245, 245, 245, 0.7);
+            --font-display: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --radius: 12px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+            --shadow-heavy: 0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+        body { font-family: var(--font-display); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+
+        /* ===== BASE SLIDE ===== */
+        .slide {
+            width: 100vw; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; scroll-snap-align: start; position: relative; overflow: hidden;
+            background: var(--bg-white);
+        }
+        .slide > * { position: relative; z-index: 1; }
+
+        /* Alternating light gray background */
+        .slide.bg-gray { background: var(--bg-light); }
+
+        .slide-content { max-width: 1200px; padding: 0 clamp(2rem, 5vw, 6rem); width: 100%; z-index: 1; }
+
+        /* ===== BACKGROUND VARIANTS ===== */
+
+        /* Dark background */
+        .bg-dark {
+            background: var(--bg-dark) !important;
+            color: var(--text-white);
+        }
+        .bg-dark .mid-title, .bg-dark .big-title, .bg-dark .huge-title { color: var(--text-white); }
+        .bg-dark .subtitle { color: var(--text-white-sub); }
+        .bg-dark .highlight { color: var(--accent); }
+        .bg-dark .overline { color: var(--accent); }
+        .bg-dark .stat-label { color: var(--text-white-sub); }
+
+        /* ===== TYPOGRAPHY ===== */
+        .huge-title {
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 900; line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+        .big-title {
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 900; line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+        .mid-title {
+            font-size: clamp(1.7rem, 4.5vw, 3.2rem);
+            font-weight: 800; line-height: 1.3;
+        }
+        .subtitle {
+            font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+            font-weight: 600; line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        .overline {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+            font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: clamp(1rem, 2vh, 2rem);
+        }
+        .highlight { color: var(--accent); font-weight: 800; }
+
+        .spacer-s { height: clamp(0.5rem, 1vh, 1rem); }
+        .spacer-m { height: clamp(1rem, 2vh, 2rem); }
+        .spacer-l { height: clamp(1.5rem, 3vh, 3rem); }
+        .spacer-xl { height: clamp(2rem, 4vh, 4rem); }
+
+        /* Accent bar */
+        .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent); margin: 0.8rem auto; border-radius: 2px; }
+
+        /* Divider */
+        .divider-line { width: 40px; height: 2px; background: var(--accent); margin: 0 auto clamp(1rem, 2vh, 2rem); border-radius: 2px; }
+
+        /* ===== LAYOUT 1: SPLIT (text + image) ===== */
+        .layout-split {
+            text-align: left;
+        }
+        .layout-split .slide-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 4vw, 5rem);
+            align-items: center;
+            max-width: 1400px;
+        }
+        .layout-split .split-text { z-index: 2; }
+        .layout-split .split-visual {
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2;
+        }
+        .layout-split .split-visual img {
+            max-width: 100%; max-height: 70vh;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-heavy);
+            object-fit: cover;
+        }
+        .layout-split .split-visual img.illust {
+            box-shadow: none;
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
+            max-height: 60vh;
+        }
+
+        /* ===== LAYOUT 2: STAT NUMBER ===== */
+        .stat-number {
+            font-family: var(--font-body);
+            font-size: clamp(5rem, 15vw, 12rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: var(--accent);
+        }
+        .stat-unit {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--accent);
+            margin-left: 0.1em;
+        }
+        .stat-label {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-top: clamp(0.5rem, 1vh, 1rem);
+        }
+
+        /* ===== LAYOUT 3: SECTION BREAK ===== */
+        .layout-section-break {
+            background: var(--bg-dark) !important;
+            color: var(--text-white);
+        }
+        .layout-section-break .section-part {
+            font-family: var(--font-body);
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: clamp(1rem, 2vh, 2rem);
+            display: inline-block;
+            padding: 0.4em 1.5em;
+            border: 2px solid var(--accent);
+            border-radius: 100px;
+        }
+        .layout-section-break .big-title {
+            color: var(--text-white);
+        }
+        .layout-section-break .subtitle {
+            color: var(--text-white-sub);
+        }
+        .layout-section-break .bottom-accent {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* ===== LAYOUT 4: EPISODE (写真全面 + 中央テキスト + 端イラスト) ===== */
+        .layout-episode {
+            background-size: cover !important;
+            background-position: center !important;
+            text-align: center;
+            color: var(--text-white);
+        }
+        .layout-episode .slide-content {
+            max-width: 1200px;
+        }
+        .layout-episode .mid-title { color: var(--text-white); }
+        .layout-episode .subtitle { color: var(--text-white-sub); }
+        .layout-episode .episode-source {
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            margin-top: clamp(1rem, 2vh, 1.5rem);
+        }
+        .layout-episode .highlight { color: var(--accent); }
+
+        /* ===== LAYOUT 5: PHOTO HERO (写真全面 + 中央テキスト) ===== */
+        .layout-photo-hero {
+            background-size: cover !important;
+            background-position: center !important;
+            text-align: center;
+            color: var(--text-white);
+        }
+        .layout-photo-hero .slide-content {
+            max-width: 1200px;
+        }
+        .layout-photo-hero .mid-title { color: var(--text-white); }
+        .layout-photo-hero .subtitle { color: var(--text-white-sub); }
+        .layout-photo-hero .highlight { color: var(--accent); }
+        /* 強調帯 (マリナ資料の紺帯に相当、v3ではダーク帯) */
+        .emphasis-band {
+            display: inline-block;
+            background: rgba(15, 15, 16, 0.8);
+            padding: 0.6em 1.8em;
+            border-radius: 8px;
+        }
+
+        /* ===== ENHANCED BULLET LIST ===== */
+        .bullet-list-v2 {
+            display: flex; flex-direction: column;
+            gap: clamp(0.6rem, 1.2vh, 1rem);
+            max-width: 900px; margin: 0 auto;
+            text-align: left;
+        }
+        .bullet-item-v2 {
+            display: flex; align-items: flex-start; gap: 1rem;
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+            font-weight: 600; color: var(--text-primary);
+            padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 2vw, 1.5rem);
+            background: var(--bg-white);
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.03);
+            line-height: 1.6;
+        }
+        .bullet-item-v2::before {
+            content: '';
+            flex-shrink: 0;
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-top: 0.55em;
+        }
+        .bullet-item-v2.active {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-card);
+            border-left: 4px solid var(--accent);
+        }
+        .bullet-item-v2.dimmed { opacity: 0.4; }
+
+        /* ===== ENHANCED FLOW CARDS ===== */
+        .flow-row {
+            display: flex; gap: clamp(1rem, 2vw, 1.5rem);
+            justify-content: center; flex-wrap: wrap;
+            margin-top: clamp(1.5rem, 3vh, 3rem);
+        }
+        .flow-card-v2 {
+            flex: 1; min-width: 220px; max-width: 280px;
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: clamp(1.5rem, 2.5vw, 2rem);
+            text-align: left;
+            box-shadow: var(--shadow-card);
+            border-top: 3px solid var(--accent);
+            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+        }
+        .flow-card-v2:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-heavy);
+        }
+        .flow-card-v2 .flow-part {
+            font-family: var(--font-body);
+            font-size: clamp(0.7rem, 1vw, 0.85rem);
+            font-weight: 800; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .flow-card-v2 .flow-title {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 800; color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .flow-card-v2 .flow-desc {
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+            font-weight: 500; color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== ILLUSTRATION ===== */
+        .slide-illust {
+            position: absolute;
+            bottom: clamp(6rem, 15vh, 14rem);
+            max-height: clamp(200px, 35vh, 400px);
+            opacity: 0.9; z-index: 2; pointer-events: none;
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12));
+        }
+        .slide-illust.pos-right { right: clamp(3rem, 6vw, 10rem); }
+        .slide-illust.pos-left { left: clamp(3rem, 6vw, 10rem); }
+
+        /* ===== CTA BADGE ===== */
+        .cta-badge {
+            display: inline-block;
+            font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+            font-weight: 700; color: var(--accent);
+            padding: 0.7em 2em;
+            background: var(--accent-light);
+            border-radius: 10px;
+            margin-top: clamp(1.5rem, 3vh, 3rem);
+        }
+
+        /* ===== NAV / COUNTER ===== */
+        .nav-dots {
+            position: fixed; right: clamp(1rem, 2vw, 2.5rem); top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 6px; z-index: 100;
+        }
+        .nav-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(150,150,150,0.2);
+            border: none; cursor: pointer; transition: all 0.3s ease; padding: 0;
+        }
+        .nav-dot.active { background: var(--accent); transform: scale(1.4); }
+        .slide-counter {
+            position: fixed; bottom: clamp(1.5rem, 2vh, 2rem); right: clamp(1.5rem, 3vw, 3rem);
+            font-family: var(--font-body); font-size: 0.75rem;
+            color: rgba(100,100,100,0.25); z-index: 100;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-delay-1 { transition-delay: 0.15s; }
+        .fade-in-delay-2 { transition-delay: 0.3s; }
+        .fade-in-delay-3 { transition-delay: 0.45s; }
+
+        .scale-in {
+            opacity: 0; transform: scale(0.8);
+            transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-spring);
+        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
+
+        /* ===== PROTOTYPE LABEL ===== */
+        .proto-label {
+            position: fixed; top: 12px; left: 12px; z-index: 999;
+            font-family: var(--font-body); font-size: 11px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: #fff; background: var(--accent);
+            padding: 6px 14px; border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="proto-label">Design System v3 — Clean School</div>
+    <nav class="nav-dots" id="navDots"></nav>
+    <div class="slide-counter" id="slideCounter">1 / 8</div>
+
+    <!-- ============================================
+         SLIDE 1: Standard center layout
+         ============================================ -->
+    <section class="slide" data-slide-index="0">
+        <div class="slide-content">
+            <p class="overline fade-in">Lisa × Masa English</p>
+            <h2 class="mid-title fade-in fade-in-delay-1">脳は自分が出せる音しか<br><span class="highlight">聞き取れない</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">これが日本人が何年勉強しても<br>英語が聞き取れない本当の理由です</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SLIDE 2: LAYOUT-SPLIT (text left + image right)
+         ============================================ -->
+    <section class="slide bg-gray layout-split" data-slide-index="1">
+        <div class="slide-content">
+            <div class="split-text">
+                <p class="overline fade-in">Point</p>
+                <h2 class="big-title fade-in fade-in-delay-1">脳は自分が出せる音しか<span class="highlight">聞き取れない</span></h2>
+                <div class="spacer-m"></div>
+                <p class="subtitle fade-in fade-in-delay-2">これが日本人が何年勉強しても英語が聞き取れない本当の理由です</p>
+                <div class="cta-badge fade-in fade-in-delay-3">チャット欄で「知らなかった！」と書いてください</div>
+            </div>
+            <div class="split-visual fade-in fade-in-delay-2">
+                <img src="assets/marina/s5_1.png" class="illust" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SLIDE 3: STAT NUMBER (giant number impact)
+         ============================================ -->
+    <section class="slide bg-dark" data-slide-index="2">
+        <div class="slide-content">
+            <p class="overline fade-in">Data</p>
+            <div class="spacer-m"></div>
+            <div class="scale-in">
+                <span class="stat-number">74</span><span class="stat-unit">%</span>
+            </div>
+            <p class="stat-label fade-in fade-in-delay-1">の情報を、人間の脳は1日後に忘れる</p>
+            <div class="spacer-l"></div>
+            <p class="subtitle fade-in fade-in-delay-2">だから独学では続かない。<br>正しい順番で、正しい頻度で繰り返す仕組みが必要</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SLIDE 4: SECTION BREAK (Part divider)
+         ============================================ -->
+    <section class="slide layout-section-break" data-slide-index="3">
+        <div class="slide-content">
+            <div class="section-part fade-in">Part 2</div>
+            <h2 class="big-title fade-in fade-in-delay-1">リスニング</h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">発音を知るだけで、<br>今まで聞き取れなかった英語が聞こえるようになる</p>
+        </div>
+        <div class="bottom-accent"></div>
+    </section>
+
+    <!-- ============================================
+         SLIDE 5: LISA のエピソード (写真全面 + 中央テキスト)
+         ============================================ -->
+    <section class="slide layout-photo-hero" data-slide-index="4"
+             style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/marina/photo_despair_standing_bg.jpg') center/cover no-repeat;">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">TOEIC 900、IELTS 6.5<br>文法も勉強した。「海外でも大丈夫」だと思っていた</h2>
+            <div class="spacer-l"></div>
+            <div class="emphasis-band fade-in fade-in-delay-1">
+                <h2 class="mid-title">でも空港で<span class="highlight">一言も聞き取れなかった</span></h2>
+            </div>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">── Lisaの渡航直後の体験</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SLIDE 6: MASA のエピソード (写真全面 + 中央テキスト + 端イラスト)
+         ============================================ -->
+    <section class="slide layout-episode" data-slide-index="5"
+             style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/marina/photo_cover_face_bg.jpg') center/cover no-repeat;">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">頭が真っ白... 心臓がバクバクして...</h2>
+            <div class="spacer-m"></div>
+            <div class="emphasis-band fade-in fade-in-delay-1">
+                <p class="mid-title">気がついたら、開始たった10秒で<br>通話ボタンを切って逃げ出していました</p>
+            </div>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2" style="color: var(--accent); font-weight: 800;">情けなくて、悔しくて、部屋で一人泣きました</h2>
+            <p class="subtitle fade-in fade-in-delay-3" style="color: rgba(255,255,255,0.5);">── Masaの体験</p>
+        </div>
+        <img src="assets/marina/s5_2.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+    <!-- ============================================
+         SLIDE 7: ENHANCED BULLET LIST
+         ============================================ -->
+    <section class="slide bg-gray" data-slide-index="6">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1.5rem, 3vh, 2.5rem);">このセミナーで手に入ること</h2>
+            <div class="bullet-list-v2">
+                <div class="bullet-item-v2 dimmed">TOEIC900点でも海外で通じなかった人が、なぜ今は英語で仕事しているのか</div>
+                <div class="bullet-item-v2 dimmed">何年も勉強してきたのに聞き取れない本当の原因が分かる</div>
+                <div class="bullet-item-v2 dimmed">発音を変えるだけでリスニングが激変する仕組みが全て分かる</div>
+                <div class="bullet-item-v2 active fade-in">聞き取れないまま英語を組み立てようとする苦しさから抜け出す方法が分かる</div>
+                <div class="bullet-item-v2 dimmed" style="opacity: 0.2;">独学で遠回りしないための最短ロードマップが手に入る</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SLIDE 8: ENHANCED FLOW CARDS
+         ============================================ -->
+    <section class="slide" data-slide-index="7">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">6ヶ月の学習ロードマップ</h2>
+            <div class="flow-row">
+                <div class="flow-card-v2 fade-in fade-in-delay-1">
+                    <div class="flow-part">Phase 1</div>
+                    <div class="flow-title">知識獲得期</div>
+                    <div class="flow-desc">0〜2ヶ月｜発音ルール・基礎フレーズを頭に入れる</div>
+                </div>
+                <div class="flow-card-v2 fade-in fade-in-delay-2">
+                    <div class="flow-part">Phase 2</div>
+                    <div class="flow-title">回路形成期</div>
+                    <div class="flow-desc">3〜4ヶ月｜反復練習で英語回路を自動化する</div>
+                </div>
+                <div class="flow-card-v2 fade-in fade-in-delay-3">
+                    <div class="flow-part">Phase 3</div>
+                    <div class="flow-title">実践期</div>
+                    <div class="flow-desc">5〜6ヶ月｜実際の会話で回路を強化する</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const navDotsContainer = document.getElementById('navDots');
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+            dot.dataset.slide = i;
+            navDotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.nav-dot');
+        const counter = document.getElementById('slideCounter');
+        let currentSlide = 0;
+
+        document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.15 }).observe(el);
+        });
+
+        slides.forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const idx = parseInt(entry.target.dataset.slideIndex);
+                        currentSlide = idx;
+                        counter.textContent = `${idx + 1} / ${totalSlides}`;
+                        dots.forEach((d, i) => {
+                            d.classList.toggle('active', i === idx);
+                            d.style.background = i === idx ? 'var(--accent)' : 'rgba(150,150,150,0.2)';
+                            d.style.transform = i === idx ? 'scale(1.4)' : 'scale(1)';
+                        });
+                    }
+                });
+            }, { threshold: 0.5 }).observe(s);
+        });
+
+        dots.forEach(dot => dot.addEventListener('click', () => {
+            slides[parseInt(dot.dataset.slide)].scrollIntoView({ behavior: 'smooth' });
+        }));
+
+        document.addEventListener('keydown', e => {
+            if (['ArrowDown','ArrowRight',' '].includes(e.key)) {
+                e.preventDefault();
+                if (currentSlide < totalSlides - 1) slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth' });
+            }
+            if (['ArrowUp','ArrowLeft'].includes(e.key)) {
+                e.preventDefault();
+                if (currentSlide > 0) slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

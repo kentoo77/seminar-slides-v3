@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脱・通じない英語｜発音を身につけ、"話せる自分へ" — 全スライド</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --bg-white: #ffffff; --bg-light: #f5f5f7; --bg-dark: #000000;
+            --text-primary: #1d1d1f; --text-secondary: #6e6e73; --text-tertiary: #86868b;
+            --text-white: #f5f5f7; --text-white-sub: rgba(245, 245, 247, 0.7);
+            --accent: #007aff; --accent-soft: rgba(0, 122, 255, 0.08); --accent-red: #ff3b30;
+            --font-display: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+        body { font-family: var(--font-display); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+        .slide { width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; scroll-snap-align: start; position: relative; overflow: hidden; background: var(--bg-white); }
+        .slide-content { max-width: 1200px; padding: 0 clamp(2rem, 5vw, 6rem); width: 100%; }
+        .bg-light { background: var(--bg-light); }
+        .bg-dark { background: var(--bg-dark); color: var(--text-white); }
+        .slide-hero { background: var(--bg-white); position: relative; }
+        .slide-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 80%, var(--accent-soft) 0%, transparent 60%); }
+        .slide-hero .slide-content { position: relative; z-index: 1; }
+        .overline { font-family: var(--font-body); font-size: clamp(0.7rem, 1.1vw, 0.95rem); font-weight: 700; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: clamp(1rem, 2vh, 2rem); }
+        .hero-title { font-size: clamp(2.8rem, 7.5vw, 6rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.025em; color: var(--text-primary); }
+        .big-title { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+        .mid-title { font-size: clamp(1.4rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.3; }
+        .subtitle { font-size: clamp(1rem, 2vw, 1.6rem); font-weight: 500; line-height: 1.6; color: var(--text-secondary); }
+        .bg-dark .subtitle { color: var(--text-white-sub); }
+        .highlight { color: var(--accent); }
+        .highlight-red { color: var(--accent-red); }
+        .spacer-s { height: clamp(0.5rem, 1vh, 1rem); }
+        .spacer-m { height: clamp(1rem, 2vh, 2rem); }
+        .spacer-l { height: clamp(1.5rem, 3vh, 3rem); }
+        .date-badge { display: inline-block; font-family: var(--font-body); font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 700; letter-spacing: 0.05em; padding: 0.6em 1.8em; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px; color: var(--text-primary); }
+        .zoom-cta { display: inline-block; margin-top: clamp(2rem, 4vh, 4rem); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 700; color: var(--accent); padding: 0.7em 2em; background: var(--accent-soft); border-radius: 12px; }
+        .bullet-list { text-align: left; max-width: 1100px; margin: clamp(1.5rem, 3vh, 3rem) auto 0; }
+        .bullet-item { font-size: clamp(0.8rem, 1.3vw, 1.05rem); font-weight: 600; color: var(--text-primary); padding: 0.45em 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.7; }
+        .divider-line { width: 40px; height: 2px; background: var(--accent); margin: 0 auto clamp(1.5rem, 3vh, 3rem); }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-delay-1 { transition-delay: 0.15s; }
+        .fade-in-delay-2 { transition-delay: 0.3s; }
+        .fade-in-delay-3 { transition-delay: 0.45s; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .entry { opacity: 0; transform: translateY(30px); }
+        .entry-1 { animation: fadeUp 0.8s var(--ease-out-expo) 0.3s forwards; }
+        .entry-2 { animation: fadeUp 0.9s var(--ease-out-expo) 0.5s forwards; }
+        .entry-3 { animation: fadeUp 0.8s var(--ease-out-expo) 0.8s forwards; }
+        .entry-4 { animation: fadeUp 0.8s var(--ease-out-expo) 1.1s forwards; }
+        .nav-dots { position: fixed; right: clamp(1rem, 2vw, 2.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 100; }
+        .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(150,150,150,0.25); border: none; cursor: pointer; transition: all 0.3s ease; padding: 0; }
+        .nav-dot.active { background: var(--text-primary); transform: scale(1.4); }
+        .slide-counter { position: fixed; bottom: clamp(1.5rem, 2vh, 2rem); right: clamp(1.5rem, 3vw, 3rem); font-family: var(--font-body); font-size: 0.75rem; color: rgba(100,100,100,0.3); z-index: 100; }
+    
+
+
+        
+        /* === SEMINAR DESIGN SYSTEM === */
+        :root {
+            /* Navy-Gold palette */
+            --navy: #1a1f3a;
+            --navy-mid: #252b4a;
+            --navy-light: #2d345a;
+            --gold: #d4a843;
+            --gold-bright: #e8c84a;
+            --accent: #d4a843;
+            --accent-soft: rgba(212, 168, 67, 0.12);
+            --accent-red: #e8453c;
+            --bg-white: #ffffff;
+            --bg-light: #eef0f4;
+            --bg-dark: #1a1f3a;
+            --text-primary: #1a1f3a;
+            --text-secondary: #4a4f6a;
+            --text-tertiary: #7a7f9a;
+            --text-white: #f0f0f5;
+            --text-white-sub: rgba(240, 240, 245, 0.75);
+            --font-display: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Geometric pattern background (light slides) */
+        .slide {
+            width: 100vw; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; scroll-snap-align: start; position: relative; overflow: hidden;
+            background: var(--bg-light);
+        }
+        .slide::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(135deg, rgba(26,31,58,0.03) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(26,31,58,0.03) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(26,31,58,0.03) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(26,31,58,0.03) 25%, transparent 25%);
+            background-size: 120px 120px;
+            background-position: 0 0, 60px 0, 60px -60px, 0 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .slide > * { position: relative; z-index: 1; }
+
+        /* Navy background slides */
+        .bg-navy {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 100%) !important;
+            color: var(--text-white);
+        }
+        .bg-navy::before {
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.04) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(255,255,255,0.04) 25%, transparent 25%),
+                linear-gradient(315deg, rgba(255,255,255,0.04) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%) !important;
+            background-size: 100px 100px !important;
+            background-position: 0 0, 50px 0, 50px -50px, 0 50px !important;
+        }
+        .bg-navy .mid-title, .bg-navy .big-title { color: var(--gold-bright); }
+        .bg-navy .subtitle { color: var(--text-white-sub); }
+        .bg-navy .highlight { color: var(--gold-bright); }
+        .bg-navy .highlight-red { color: #ff6b6b; }
+
+        /* Dark overlay slides (photo backgrounds) */
+        .bg-dark {
+            background: var(--bg-dark); color: var(--text-white);
+        }
+        .bg-dark::before { display: none; }
+        .bg-dark .mid-title, .bg-dark .big-title { color: var(--text-white); }
+        .bg-dark .subtitle { color: var(--text-white-sub); }
+        .bg-dark .highlight { color: var(--gold-bright); }
+
+        /* Light background refinement */
+        .bg-light {
+            background: var(--bg-light) !important;
+        }
+
+        /* Navy top+bottom bars for light slides (like Marina) */
+        .slide::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: clamp(40px, 5vh, 60px);
+            background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bg-navy::after, .bg-dark::after { display: none; }
+
+        .slide-content { max-width: 1200px; padding: 0 clamp(2rem, 5vw, 6rem); width: 100%; z-index: 1; }
+
+        /* Typography - bolder */
+        .big-title { font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-primary); }
+        .mid-title { font-size: clamp(1.7rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.3; color: var(--text-primary); }
+        .subtitle { font-size: clamp(1.2rem, 2.2vw, 1.8rem); font-weight: 600; line-height: 1.6; color: var(--text-secondary); }
+
+        /* Gold highlight instead of blue */
+        .highlight { color: var(--gold); font-weight: 800; }
+        .highlight-red { color: var(--accent-red); font-weight: 800; }
+
+        /* Gold underline accent bar */
+        .gold-bar { display: block; width: 80px; height: 4px; background: var(--gold); margin: 0.8rem auto; border-radius: 2px; }
+
+        /* Illustration styles - larger */
+        .slide-illust {
+            position: absolute;
+            bottom: clamp(6rem, 15vh, 14rem);
+            max-height: clamp(200px, 35vh, 400px);
+            opacity: 0.9;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 16px rgba(0,0,0,0.1));
+        }
+        .slide-illust.pos-right { right: clamp(3rem, 6vw, 10rem); }
+        .slide-illust.pos-left { left: clamp(3rem, 6vw, 10rem); }
+        .slide-illust.pos-center { left: 50%; transform: translateX(-50%); }
+
+        /* Overline badge */
+        .overline {
+            font-family: var(--font-body); font-size: clamp(0.8rem, 1.2vw, 1rem);
+            font-weight: 700; letter-spacing: 0.1em; color: var(--gold);
+            margin-bottom: clamp(1rem, 2vh, 2rem);
+        }
+
+        /* Stats */
+        .stat-value { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; color: var(--gold); }
+
+        /* Flow cards */
+        .flow-card { flex: 1; max-width: 280px; background: rgba(255,255,255,0.9); border-radius: 16px; padding: clamp(1.2rem, 2vw, 2rem); text-align: left; border: 1px solid rgba(26,31,58,0.08); }
+        .flow-part { font-family: var(--font-body); font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+
+        /* Testimonial */
+        .testimonial-solo { max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.9); border-radius: 16px; padding: clamp(1.5rem, 2.5vw, 2.5rem); text-align: left; border: 1px solid rgba(26,31,58,0.06); }
+        .testimonial-ba strong { color: var(--accent-red); font-weight: 700; }
+
+        /* Divider */
+        .divider-line { width: 60px; height: 3px; background: var(--gold); margin: 0 auto clamp(1rem, 2vh, 2rem); border-radius: 2px; }
+
+        /* Profile image with gold ring */
+        .profile-img { width: clamp(90px, 12vw, 130px); height: clamp(90px, 12vw, 130px); border-radius: 50%; object-fit: cover; margin: 0 auto clamp(1rem, 1.5vh, 1.5rem); display: block; box-shadow: 0 0 0 3px var(--gold), 0 4px 16px rgba(0,0,0,0.12); }
+
+        /* Nav dots */
+        .nav-dots { position: fixed; right: clamp(1rem, 2vw, 2.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 100; }
+        .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(150,150,150,0.25); border: none; cursor: pointer; transition: all 0.3s ease; padding: 0; }
+        .nav-dot.active { background: var(--gold); transform: scale(1.4); }
+        .slide-counter { position: fixed; bottom: clamp(1.5rem, 2vh, 2rem); right: clamp(1.5rem, 3vw, 3rem); font-family: var(--font-body); font-size: 0.75rem; color: rgba(100,100,100,0.3); z-index: 100; }
+
+        /* Pain list */
+        .pain-list { display: flex; flex-direction: column; gap: clamp(0.5rem, 1vh, 0.8rem); max-width: 600px; margin: 0 auto; }
+        .pain-item { font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 700; color: var(--text-primary); padding: 0.6em 1.2em; background: rgba(255,255,255,0.8); border-radius: 12px; border-left: 4px solid var(--accent-red); }
+
+        /* Resume banner */
+        .resume-banner, .resume-yes, .resume-no { z-index: 80; }
+
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-delay-1 { transition-delay: 0.15s; }
+        .fade-in-delay-2 { transition-delay: 0.3s; }
+        .fade-in-delay-3 { transition-delay: 0.45s; }
+
+        /* Career list with gold accent */
+        .lisa-career-list { list-style: none; padding: 0; border-left: 3px solid var(--gold); padding-left: clamp(0.75rem, 1.5vw, 1.2rem); }
+
+        /* Results image */
+        .results-img { width: 100%; max-width: 900px; border-radius: 16px; margin: 0 auto; display: block; box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+
+
+        .huge-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.1; }
+
+    </style>
+</head>
+<body>
+    <nav class="nav-dots" id="navDots"></nav>
+    <div class="slide-counter" id="slideCounter">1 / 163</div>
+
+<section class="slide slide-hero" data-slide-index="0">
+        <div class="slide-content">
+            <p class="overline entry entry-1">Lisa × Masa Special Seminar</p>
+            <h1 class="hero-title entry entry-2">発音から始める、<br>本当の英語力。</h1>
+            <div class="spacer-l"></div>
+            <p class="subtitle entry entry-3">脱・通じない英語｜発音を身につけ、"話せる自分へ"</p>
+            <div class="spacer-m"></div>
+            <span class="date-badge entry entry-4">4/19 (日) 20:00 ~</span>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="1">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">今よりも自信を持って<br>英語を話せるようになりたい方は<br><span class="highlight">どのくらいいらっしゃいますか？</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-1">チャット欄で「はい！」or「🙋」と手を挙げてください</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="2">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">海外旅行に行っても何不自由なく<br>過ごせるくらいペラペラになりたい方は<br><span class="highlight">どのくらいいらっしゃいますか？</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-1">チャット欄で「はい！」or「🙋」と手を挙げてください</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="3">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">半年後、ペラペラな英語を手に入れ<br>自分に自信を持って堂々と人生を歩みたい方は<br><span class="highlight">どのくらいいらっしゃいますか？</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-1">チャット欄で「はい！」or「🙋」と手を挙げてください</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="4">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in"><span class="highlight">その全てを叶えるのが今日のセミナーです</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">一つでも当てはまった皆さんは<br>間違いなく正しい場所に来ています</p>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="5">
+        <div class="slide-content">
+            <p class="overline fade-in">お願いしたい大事なこと</p>
+            <h2 class="mid-title fade-in fade-in-delay-1"><span class="highlight-red">カメラON (顔出し) での参加を<br>お願いします！</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">皆さんの「反応」が見えると私も<br>もっと熱く、深くお話しすることができます</p>
+            <p class="subtitle fade-in fade-in-delay-3">（どうしても難しい場合はそのままでOKです！）</p>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="6">
+        <div class="slide-content">
+            <p class="overline fade-in">【超重要】</p>
+            <h2 class="mid-title fade-in fade-in-delay-1">このライブは <span class="highlight">参加型</span> です</h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">私が一方的に話す授業ではありません<br>皆さんと作るライブです</p>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="7">
+        <div class="slide-content">
+            <div class="divider-line fade-in"></div>
+            <p class="overline fade-in fade-in-delay-1">Lisa × Masa Special Seminar</p>
+            <h2 class="big-title fade-in fade-in-delay-2">脱・通じない英語｜発音を身につけ、"話せる自分へ"</h2>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="8">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in">TOEIC900点でも海外で通じなかった人が、なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="9">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
+                <div class="bullet-item fade-in">何年も勉強してきたのに聞き取れない本当の原因が分かり「耳のせいじゃなかったんだ」と腑に落ちる</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="10">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
+                <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり「耳のせいじゃなかったんだ」と腑に落ちる</div>
+                <div class="bullet-item fade-in">発音を変えるだけでリスニングが激変する ── その仕組みが全て分かる</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="11">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
+                <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり「耳のせいじゃなかったんだ」と腑に落ちる</div>
+                <div class="bullet-item" style="opacity: 0.5;">発音を変えるだけでリスニングが激変する ── その仕組みが全て分かる</div>
+                <div class="bullet-item fade-in">聞き取れないまま英語を組み立てようとする苦しさから抜け出す方法が分かる</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="12">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
+                <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり「耳のせいじゃなかったんだ」と腑に落ちる</div>
+                <div class="bullet-item" style="opacity: 0.5;">発音を変えるだけでリスニングが激変する ── その仕組みが全て分かる</div>
+                <div class="bullet-item" style="opacity: 0.5;">聞き取れないまま英語を組み立てようとする苦しさから抜け出す方法が分かる</div>
+                <div class="bullet-item fade-in">独学で遠回りしないために、何を・どの順番で・どれくらいやればいいか ── 最短ロードマップが手に入る</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="13">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
+                <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり「耳のせいじゃなかったんだ」と腑に落ちる</div>
+                <div class="bullet-item" style="opacity: 0.5;">発音を変えるだけでリスニングが激変する ── その仕組みが全て分かる</div>
+                <div class="bullet-item" style="opacity: 0.5;">聞き取れないまま英語を組み立てようとする苦しさから抜け出す方法が分かる</div>
+                <div class="bullet-item" style="opacity: 0.5;">独学で遠回りしないために、何を・どの順番で・どれくらいやればいいか ── 最短ロードマップが手に入る</div>
+                <div class="bullet-item fade-in">英語が話せる自分を諦めかけていたあなたが「今度こそいける」と確信できる</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="14">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">任せてください。</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">今日で全て手に入ります！</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="15">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、結局"Thank you"と"Sorry"で乗り切ってしまう</div>
+            </div>
+        </div>
+            </section>
+
+<section class="slide bg-light" data-slide-index="16">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、結局"Thank you"と"Sorry"で乗り切ってしまう</div>
+                <div class="bullet-item fade-in">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。だけど英語を話せる自分を、まだ諦めきれない</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="17">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、結局"Thank you"と"Sorry"で乗り切ってしまう</div>
+                <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。だけど英語を話せる自分を、まだ諦めきれない</div>
+                <div class="bullet-item fade-in">TOEICの点数はそこそこ取れる。文法も読解もできる。なのに口から英語が出てこない。この差が何なのか分からなくてずっとモヤモヤしている</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="18">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、結局"Thank you"と"Sorry"で乗り切ってしまう</div>
+                <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。だけど英語を話せる自分を、まだ諦めきれない</div>
+                <div class="bullet-item" style="opacity: 0.5;">TOEICの点数はそこそこ取れる。文法も読解もできる。なのに口から英語が出てこない。この差が何なのか分からなくてずっとモヤモヤしている</div>
+                <div class="bullet-item fade-in">海外旅行で現地の人と会話したい、仕事で英語を使いたい...。やりたいことは明確なのに、何をどの順番でやればいいか分からず動けない</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="19">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、結局"Thank you"と"Sorry"で乗り切ってしまう</div>
+                <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。だけど英語を話せる自分を、まだ諦めきれない</div>
+                <div class="bullet-item" style="opacity: 0.5;">TOEICの点数はそこそこ取れる。文法も読解もできる。なのに口から英語が出てこない。この差が何なのか分からなくてずっとモヤモヤしている</div>
+                <div class="bullet-item" style="opacity: 0.5;">海外旅行で現地の人と会話したい、仕事で英語を使いたい...。やりたいことは明確なのに、何をどの順番でやればいいか分からず動けない</div>
+                <div class="bullet-item fade-in">独学で頑張ってきたけど、自分のやり方が合っているのか不安で、このまま続けても一生話せないんじゃないかと薄々感じている</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="20">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、結局"Thank you"と"Sorry"で乗り切ってしまう</div>
+                <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。だけど英語を話せる自分を、まだ諦めきれない</div>
+                <div class="bullet-item" style="opacity: 0.5;">TOEICの点数はそこそこ取れる。文法も読解もできる。なのに口から英語が出てこない。この差が何なのか分からなくてずっとモヤモヤしている</div>
+                <div class="bullet-item" style="opacity: 0.5;">海外旅行で現地の人と会話したい、仕事で英語を使いたい...。やりたいことは明確なのに、何をどの順番でやればいいか分からず動けない</div>
+                <div class="bullet-item" style="opacity: 0.5;">独学で頑張ってきたけど、自分のやり方が合っているのか不安で、このまま続けても一生話せないんじゃないかと薄々感じている</div>
+                <div class="bullet-item fade-in">英語ができる同僚や友人を見て悔しい思いをしている。自分だって本気でやれば話せるはずだと思っているのに、その「本気」の出し方が分からない</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="21">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、結局"Thank you"と"Sorry"で乗り切ってしまう</div>
+                <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。だけど英語を話せる自分を、まだ諦めきれない</div>
+                <div class="bullet-item" style="opacity: 0.5;">TOEICの点数はそこそこ取れる。文法も読解もできる。なのに口から英語が出てこない。この差が何なのか分からなくてずっとモヤモヤしている</div>
+                <div class="bullet-item" style="opacity: 0.5;">海外旅行で現地の人と会話したい、仕事で英語を使いたい...。やりたいことは明確なのに、何をどの順番でやればいいか分からず動けない</div>
+                <div class="bullet-item" style="opacity: 0.5;">独学で頑張ってきたけど、自分のやり方が合っているのか不安で、このまま続けても一生話せないんじゃないかと薄々感じている</div>
+                <div class="bullet-item" style="opacity: 0.5;">英語ができる同僚や友人を見て悔しい思いをしている。自分だって本気でやれば話せるはずだと思っているのに、その「本気」の出し方が分からない</div>
+                <div class="bullet-item fade-in">過去に英語学習で挫折した経験がある。「自分には向いてない」と思いかけている。だけど子供や家族の前で、英語ができる自分を見せたい気持ちがまだある</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="22">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">安心してください</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">今日で全て解決します！</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="23">
+        <div class="slide-content">
+            <p class="subtitle fade-in">もう歳だから</p>
+            <p class="subtitle fade-in fade-in-delay-1">記憶力が悪いから</p>
+            <p class="subtitle fade-in fade-in-delay-1">今まで何をやってもダメだったから</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2"><span class="highlight">諦めかけているとしても大丈夫です</span></h2>
+        </div>
+            <img src="assets/marina/s5_6.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="24">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">正しい勉強法と<br>どの順番で勉強すればいいかを</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1">ただ<span class="highlight">知らなかっただけ</span>なんです</h2>
+        </div>
+            <img src="assets/marina/s7_4.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-dark" data-slide-index="25">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">責任を持ってあなたを</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1" style="color: var(--text-white);"><span class="highlight">英語が話せる側</span>の世界</h2>
+            <div class="spacer-s"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2" style="color: var(--text-white);">へ引き上げます</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="26">
+        <div class="slide-content">
+            <div class="divider-line fade-in"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">本日の流れ</h2>
+            <div class="flow-container">
+                <div class="flow-card fade-in fade-in-delay-1">
+                    <div class="flow-part">Part 1</div>
+                    <h3 class="flow-title">発音</h3>
+                    <p class="flow-desc">聞き取れない・話せないの原因が発音にあることを理解し、この場で聞こえた！を体験する</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 2</div>
+                    <h3 class="flow-title">リスニング</h3>
+                    <p class="flow-desc">発音を知るだけで、今まで聞き取れなかった英語が聞こえるようになる</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 3</div>
+                    <h3 class="flow-title">スピーキング</h3>
+                    <p class="flow-desc">聞ける→話せるの回路をつなぎ、日本語を経由せず英語が口から出る感覚を掴む</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 4</div>
+                    <h3 class="flow-title">ロードマップ</h3>
+                    <p class="flow-desc">何を・どの順番で・どれくらいやればいいか。最短ルートが全て分かる</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="27" style="background: url('assets/marina/bg-present.png') center/cover no-repeat;">
+        <div class="slide-content" style="position: relative; z-index: 1;">
+            <p class="fade-in" style="font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 600; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid #2A274E; display: inline-block; padding-bottom: 0.3em; margin-bottom: clamp(1rem, 2vh, 2rem);">セミナー参加特典のご案内</p>
+            <h2 class="big-title fade-in fade-in-delay-1" style="color: #1d1d1f; line-height: 1.3;">中学英語すら怪しくても<br>英語が話せるようになる</h2>
+            <div class="spacer-s"></div>
+            <div style="background: #ff3b30; padding: 0.4em 1.5em; border-radius: 6px; display: inline-block;">
+                <h2 class="mid-title fade-in fade-in-delay-2" style="color: #fff; font-weight: 800;">完全ロードマップ解説動画</h2>
+            </div>
+            <div class="spacer-m"></div>
+            <h1 class="fade-in fade-in-delay-3" style="font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; color: #1d1d1f; letter-spacing: 0.05em;">プレゼント</h1>
+        </div>
+        <img src="assets/Lisaさん.jpg" class="fade-in" style="position: absolute; left: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+        <img src="assets/masa.png" class="fade-in" style="position: absolute; right: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+    </section>
+
+<section class="slide" data-slide-index="28">
+        <div class="slide-content">
+            <p class="overline fade-in">LIVE参加特典の受取方法</p>
+            <h2 class="mid-title fade-in fade-in-delay-1">セミナーの最後に<span class="highlight-red">キーワード</span>を発表します</h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">そのキーワードがないと<span class="highlight-red">受け取れません</span>ので<br>絶対に最後まで集中して聞いてくださいね！</p>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="29">
+        <div class="slide-content">
+            <img src="assets/masa.png" alt="Masa English" class="profile-img fade-in">
+            <h2 class="mid-title fade-in fade-in-delay-1">Masa English</h2>
+            <p class="subtitle fade-in fade-in-delay-1">合同会社MasaEnglish 代表 / 東京外国語大学卒</p>
+            <div class="stats-row fade-in fade-in-delay-2">
+                <div class="stat-item"><div class="stat-value">0</div><div class="stat-label">留学経験</div></div>
+                <div class="stat-item"><div class="stat-value">6ヶ月</div><div class="stat-label">で英語起業</div></div>
+                <div class="stat-item"><div class="stat-value">400名+</div><div class="stat-label">受講生</div></div>
+                <div class="stat-item"><div class="stat-value">9.2万</div><div class="stat-label">フォロワー</div></div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="30">
+        <div class="slide-content">
+            <img src="assets/Lisaさん.jpg" alt="Lisa" class="profile-img fade-in">
+            <h2 class="mid-title fade-in fade-in-delay-1" style="color: var(--accent);">Lisa</h2>
+            <p class="subtitle fade-in fade-in-delay-1">現在ベトナムで英語を使って仕事をしている</p>
+            <div class="lisa-career fade-in fade-in-delay-2">
+                <p class="lisa-career-head">オーストラリアに滞在<br>7都市全てで1週間以内に仕事を獲得</p>
+                <ul class="lisa-career-list">
+                    <li>五つ星ホテルにてフロント・予約課を担当</li>
+                    <li>レストランマネージャー（採用・教育含む）</li>
+                    <li>ビジネス通訳</li>
+                    <li>カフェ・飲食店勤務</li>
+                </ul>
+            </div>
+            <div class="stats-row fade-in fade-in-delay-3" style="margin-top: clamp(0.75rem, 1.5vh, 1.5rem);">
+                <div class="stat-item"><div class="stat-value">TOEIC 900</div></div>
+                <div class="stat-item"><div class="stat-value">IELTS 6.5</div></div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="31" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/marina/photo_cover_face_bg.jpg') center/cover no-repeat;">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">TOEIC 900、IELTS 6.5<br>文法も勉強した。「海外でも大丈夫」だと思っていた</h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1" style="color: var(--text-white);"><span class="highlight-red">自信満々で渡航した</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="32">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">でも空港で<span class="highlight">一言も聞き取れなかった</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="33">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">テストの英語と現実の英語は<span class="highlight-red">全く違った</span></h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">そこから発音と向き合い<br><span class="highlight">今は英語で仕事をし、海外で生活している</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="34" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('assets/marina/photo_despair_standing_bg.jpg') center/cover no-repeat;">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">今でこそ話せる僕らも...</h2>
+            <div class="spacer-m"></div>
+            <div style="background: rgba(42,39,78,0.85); padding: 0.8em 2em; border-radius: 8px; display: inline-block;">
+                <h2 class="mid-title fade-in fade-in-delay-1" style="color: var(--text-white);">「Hi, how are you」に対して...</h2>
+            </div>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2" style="color: #ff3b30; font-weight: 800;">何も、言えなかったんです...</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="35" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/marina/photo_cover_face_bg.jpg') center/cover no-repeat;">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">頭が真っ白... 心臓がバクバクして...</h2>
+            <div class="spacer-m"></div>
+            <div style="background: rgba(42,39,78,0.85); padding: 0.8em 2em; border-radius: 8px; display: inline-block;">
+                <p class="mid-title fade-in fade-in-delay-1" style="color: var(--text-white);">気がついたら、開始たった10秒で<br>通話ボタンを切って逃げ出していました</p>
+            </div>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2" style="color: #EBCC58; font-weight: 800;">情けなくて、悔しくて、部屋で一人泣きました</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="36" style="background: linear-gradient(rgba(60,60,60,0.7), rgba(60,60,60,0.7)), url('assets/marina/photo_boss_scolding_bg.jpg') center top/cover no-repeat;">
+        <div class="slide-content">
+            <div style="background: rgba(42,39,78,0.85); padding: 0.8em 2em; border-radius: 8px; display: inline-block;">
+                <h2 class="mid-title fade-in" style="color: var(--text-white);">「俺には、英語の才能なんて<span style="color: #EBCC58;">1ミリもないんだ</span>」</h2>
+            </div>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1" style="color: var(--text-white);">そこから1ヶ月間、<br>英語を見るのも嫌になって<br>英語は諦めたんです...</h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="37" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/marina/s3_1.png') center/cover no-repeat;">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">それでも、どうしても諦めきれなかった</h2>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1" style="color: var(--text-white);">憧れのネイティブの先生と<br><span class="highlight">「対等に話したい」</span>という夢</h2>
+        </div>
+            
+    </section>
+
+<section class="slide" data-slide-index="38">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">勉強法をガラッと変えた<span class="highlight-red">「転機」</span></h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1"><span class="highlight">正しい順番で学び直した</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="39">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">それに気づいてからは早かったです</h2>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">半年後には、あんなに怖かったネイティブと<br><span class="highlight">自然と英語を話せるようになっていました</span></h2>
+        </div>
+            <img src="assets/marina/s11_1a.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="40">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">でも、Masaさん<span class="highlight">だからできたんでしょ？</span></h2>
+        </div>
+            <img src="assets/marina/s3_4.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="41">
+        <div class="slide-content">
+            <p class="subtitle fade-in">僕だけじゃなく、他の方も同じ方法で成果を出しています！</p>
+            <div class="spacer-m"></div>
+            <div class="testimonial-solo fade-in fade-in-delay-1">
+                <img src="assets/Kaori さん.png" alt="Kaoriさん">
+                <p class="testimonial-name">Kaoriさん</p>
+                <p class="testimonial-ba">先生10人に英語習っても話せず<br><strong>→ 英語で仕事するレベルまで復活</strong></p>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="42">
+        <div class="slide-content">
+            <div class="testimonial-solo fade-in">
+                <img src="assets/Ayakoさん.png" alt="Ayakoさん">
+                <p class="testimonial-name">Ayakoさん</p>
+                <p class="testimonial-ba">TOEICも英会話も伸び悩んでいた<br><strong>→ TOEICも英会話も爆伸び</strong></p>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="43">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">他にも沢山の方が成果を出しています！</h2>
+            <div class="spacer-m"></div>
+            <img src="assets/実績.png" alt="受講生実績" class="results-img fade-in fade-in-delay-1">
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="44">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">今日お話しするのは私のただの経験則ではありません</h2>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1"><span class="highlight-red">400人以上の受講生で実証された事実</span>です</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="45">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight">こんなことばかりやっていませんか？</span></h2>
+        </div>
+            <img src="assets/marina/s10_4.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="46">
+        <div class="slide-content">
+            
+            <div class="pain-list">
+                <div class="pain-item fade-in">単語の暗記</div>
+                <div class="pain-item fade-in fade-in-delay-1">文法の勉強</div>
+                <div class="pain-item fade-in fade-in-delay-1">TOEIC対策</div>
+                <div class="pain-item fade-in fade-in-delay-2">瞬間英作文</div>
+                <div class="pain-item fade-in fade-in-delay-2">参考書・問題集</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="47">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">全部「読み書き」の勉強なんです</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1">発音の勉強が<span class="highlight-red">一つもない</span></h2>
+        </div>
+            <img src="assets/marina/s5_4.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="48">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">実は英語学習で最も見落とされているのは</h2>
+            <div class="spacer-l"></div>
+            <h2 class="huge-title fade-in fade-in-delay-1"><span class="highlight-red">「発音」</span>です</h2>
+        </div>
+            <img src="assets/marina/s12_5.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide" data-slide-index="49">
+        <div class="slide-content">
+            
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1">こんな経験、<span class="highlight">ありませんか？</span></h2>
+        </div>
+            <img src="assets/marina/s5_2.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-dark" data-slide-index="50">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">英語を何年も勉強してきたのに<br>いざ話す場面になると<span class="highlight">頭が真っ白になる</span></h2>
+        </div>
+            <img src="assets/marina/s7_1.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide bg-dark" data-slide-index="51">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">英語の先生とは話せるのに<br>ネイティブの前だと<span class="highlight">フリーズする</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="52">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">知識はあるのに、いざ話そうとすると<br><span class="highlight">口から英語が出てこない</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="53">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">グループの会話についていけず<br>笑うタイミングだけ合わせる<br><span class="highlight">愛想笑いの毎日</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="54">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">電話で聞き返したら<br>「英語を話せる人に<span class="highlight">代わって</span>」と言われた</h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="55">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">「いつか話せるようになりたい」と<br><span class="highlight">何年も経ってしまった</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="56">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">自分にはもう<br><span class="highlight-red">無理なんじゃないかと思っている</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="57">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">あなたは<span class="highlight-red">悪くありません。</span></h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1"><span class="highlight">発音の重要性を知らなかっただけ</span>なんです</h2>
+        </div>
+            <img src="assets/marina/s7_4.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="58">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">「発音」って "th" の練習とかでしょ？<br>と思っていませんか？</h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">ここで言う「発音」とは<br><span class="highlight">英語の発音のルールのこと</span>です</h2>
+        </div>
+            <img src="assets/marina/s7_8.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="59">
+        <div class="slide-content">
+            <div class="divider-line fade-in"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">では Part 1 で具体的に見ていきましょう</h2>
+            <div class="flow-container">
+                <div class="flow-card active fade-in fade-in-delay-1">
+                    <div class="flow-part">Part 1</div>
+                    <h3 class="flow-title">発音</h3>
+                    <p class="flow-desc">聞き取れない・話せないの原因が発音にあることを理解し、この場で聞こえた！を体験する</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 2</div>
+                    <h3 class="flow-title">リスニング</h3>
+                    <p class="flow-desc">発音を知るだけで、今まで聞き取れなかった英語が聞こえるようになる</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 3</div>
+                    <h3 class="flow-title">スピーキング</h3>
+                    <p class="flow-desc">聞ける→話せるの回路をつなぎ、日本語を経由せず英語が口から出る感覚を掴む</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 4</div>
+                    <h3 class="flow-title">ロードマップ</h3>
+                    <p class="flow-desc">何を・どの順番で・どれくらいやればいいか。最短ルートが全て分かる</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="60">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">そもそも<span class="highlight">発音</span>って何ですか？</h2>
+        </div>
+            <img src="assets/marina/s7_8.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="61">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">多くの人がイメージする発音はこれです</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1">"th" を噛む練習</div>
+                <div class="bullet-item fade-in fade-in-delay-1">"R" と "L" を区別する練習</div>
+                <div class="bullet-item fade-in fade-in-delay-2">カタカナ英語を直す練習</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="62">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">実はこれ、英語の発音全体の</h2>
+            <div class="spacer-m"></div>
+            <div class="huge-title fade-in fade-in-delay-1"><span class="highlight-red">たった1%</span></div>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2">です</h2>
+        </div>
+            <img src="assets/marina/s12_5.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="63">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">では残りの99%は何なのか。それが<span class="highlight">英語の発音のルール</span>です</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1"><span class="highlight">リンキング</span> — 単語と単語の音が繋がる</div>
+                <div class="bullet-item fade-in fade-in-delay-1"><span class="highlight">リダクション</span> — 音が消える</div>
+                <div class="bullet-item fade-in fade-in-delay-2"><span class="highlight">フラッピング</span> — 音が変わる</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="64">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">具体的にどう違うか、見てみましょう</h2>
+            <div class="example-row">
+                <div class="example-box fade-in fade-in-delay-1">
+                    <p class="example-label">教科書の英語</p>
+                    <p class="example-text">チェック・イット・アウト</p>
+                </div>
+                <div class="example-arrow fade-in fade-in-delay-1">↓</div>
+                <div class="example-box fade-in fade-in-delay-2">
+                    <p class="example-label">ネイティブの英語</p>
+                    <p class="example-text highlight-red">チェキラウ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="65">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">もう一つ見てみましょう</h2>
+            <div class="example-row">
+                <div class="example-box fade-in fade-in-delay-1">
+                    <p class="example-label">教科書の英語</p>
+                    <p class="example-text">ワット・ドゥ・ユー・ウォント</p>
+                </div>
+                <div class="example-arrow fade-in fade-in-delay-1">↓</div>
+                <div class="example-box fade-in fade-in-delay-2">
+                    <p class="example-label">ネイティブの英語</p>
+                    <p class="example-text highlight-red">ワドュワナ?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="66">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">どれだけ勉強しても聞き取れなかったのは、<span class="highlight-red">この発音を知らなかった</span>からです</h2>
+        </div>
+            <img src="assets/marina/s5_5.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="67">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">ではなぜ、知らないだけで<span class="highlight">聞き取れなくなる</span>のでしょうか？</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="68">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">なぜなら</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">脳は自分が出せる発音しか<br>聞き取れない</span>からです</h2>
+        </div>
+            <img src="assets/marina/s7_4.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="69">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">つまり、自分で発音できるようになれば、<span class="highlight">聞こえる英語が一気に増えます</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="70">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">ということで、今から皆さんにも体験してもらいます</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">実際に試してみましょう</span></h2>
+        </div>
+            <img src="assets/marina/s7_5.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="71">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight">まずこれを聞いてください</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-1">何と言っていたか、チャットに書いてみてください</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="72">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight">聞き取れましたか？</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="73">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">実はこの音声では、こんなことが起きていました</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1">リダクション — want to が wanna に変化していた</div>
+                <div class="bullet-item fade-in fade-in-delay-2">リンキング — t の音が消えて、前後の単語が繋がっていた</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="74">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">この発音を知った上で、もう一度同じ音声を聞いてみてください</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">さっきと聞こえ方は変わりましたか？</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="75">
+        <div class="slide-content">
+            <div class="huge-title fade-in"><span class="highlight-red">聞こえましたか？</span></div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="76">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">たった1つの発音を知っただけで、聞こえ方が変わりました</h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">英語の発音は<span class="huge-title highlight">約20種類</span>あります</h2>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2">今日知ったのは、まだ<span class="highlight-red">1つだけ</span>です</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="77">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">発音を知ってから起きた3つの変化</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1">聞き返されることがぐっと減った</div>
+                <div class="bullet-item fade-in fade-in-delay-1">聞き返された時に、自分の発音のどこが違ったかすぐ分かるようになった</div>
+                <div class="bullet-item fade-in fade-in-delay-2">一番大きかったのは、<span class="bullet-emphasis">リスニング力が桁違いに上がったこと</span></div>
+            </div>
+        </div>
+            <img src="assets/marina/s11_2a.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="78">
+        <div class="slide-content">
+            <p class="overline fade-in">実際にうちの受講生も同じ変化を経験しています</p>
+            <div class="testimonial-solo fade-in fade-in-delay-1">
+                <img src="assets/Kaori さん.png" alt="Kaoriさん">
+                <p class="testimonial-name">Kaoriさん</p>
+                <p class="testimonial-ba">Before: 10社もコーチングを受けて全部ダメだった<br><strong>After: 英語で仕事するレベルまで復活</strong></p>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="79">
+        <div class="slide-content">
+            <div class="testimonial-solo fade-in">
+                <img src="assets/Ayakoさん.png" alt="Ayakoさん">
+                <p class="testimonial-name">Ayakoさん</p>
+                <p class="testimonial-ba">Before: TOEICも英会話も伸び悩んでいた<br><strong>After: TOEICも英会話も爆伸び</strong></p>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="80">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">他にも沢山の方が成果を出しています</h2>
+            <div class="spacer-l"></div>
+            <img src="assets/実績.png" alt="実績" class="results-img fade-in fade-in-delay-1">
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="81">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">発音が分かると、リスニングはどう変わるのか。<span class="highlight">次のパートで詳しく見ていきましょう</span></h2>
+            <div class="divider-line fade-in fade-in-delay-1" style="margin-top: clamp(1.5rem, 3vh, 3rem);"></div>
+            <div class="flow-container">
+                <div class="flow-card done fade-in fade-in-delay-1">
+                    <div class="flow-part">Part 1</div>
+                    <h3 class="flow-title">発音</h3>
+                    <p class="flow-desc">聞き取れない・話せないの原因が発音にあることを理解し、この場で聞こえた！を体験する</p>
+                </div>
+                <div class="flow-card active fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 2</div>
+                    <h3 class="flow-title">リスニング</h3>
+                    <p class="flow-desc">発音を知るだけで、今まで聞き取れなかった英語が聞こえるようになる</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 3</div>
+                    <h3 class="flow-title">スピーキング</h3>
+                    <p class="flow-desc">聞ける→話せるの回路をつなぎ、日本語を経由せず英語が口から出る感覚を掴む</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 4</div>
+                    <h3 class="flow-title">ロードマップ</h3>
+                    <p class="flow-desc">何を・どの順番で・どれくらいやればいいか。最短ルートが全て分かる</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="82">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">Part1で発音を知るだけで聞こえ方が変わることを体験しました。<br>ではなぜ、<span class="highlight">発音が分かるとリスニングができるようになるのか</span>、その仕組みを見ていきましょう</h2>
+        </div>
+            <img src="assets/marina/s10_2.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="83">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">リスニングの問題には<span class="highlight">2種類</span>あります</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1"><span class="highlight-red">1つは発音が分からず聞き取れない問題。</span>音自体が認識できていない状態です</div>
+                <div class="bullet-item fade-in fade-in-delay-2">もう1つは意味が取れない問題。音は聞こえても、言葉として理解できていない状態です</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="84">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="text-align: left;">単語は知っている。文を読めば分かる。でも聞くと分からない。<br><br>これは<span class="highlight-red">発音の問題</span>です</h2>
+        </div>
+            <img src="assets/marina/s5_5.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="85">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">どれだけ勉強しても聞き取れなかったのは、知識はあったけど<span class="highlight-red">発音を知らなかった</span>からです</h2>
+        </div>
+            <img src="assets/marina/s10_1.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="86">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="text-align: left;">テストの英語はゆっくり・はっきり・区切って話してくれます。<br>でも現実の英語は速い・つながる・消える。<br><br><span class="highlight-red">この差が、聞き取れない原因</span>です</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="87">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="text-align: left;">先生の英語が分かるのは、ゆっくり話してくれるから。ネイティブの英語が分からないのは、発音で変化しているから。<br><br>つまり、速いのではなく<span class="highlight-red">変わっているだけ</span>なんです</h2>
+        </div>
+            <img src="assets/marina/s11_2b.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="88">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">解決策はシンプルです</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">自分でも発音できるようにすれば、聞こえる英語が一気に増えます</span></h2>
+        </div>
+            <img src="assets/marina/s7_4.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="89">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">Part1で発音を知ると聞こえ方が変わることを体験しました。<br>ここではさらにもう1つの発音を知って、<span class="highlight">皆さんに変化を体感してもらいます</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="90">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight">この音声を聞いて、何と言っていたかチャットに書いてみてください</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-1">チャットに書いてみてください</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="91">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">実はこの音声でも<span class="highlight">こんなことが起きていました</span></h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1">リダクション ── 「last night」は「ラスナイト」と発音される。tが消えるからです</div>
+                <div class="bullet-item fade-in fade-in-delay-2">リンキング ── 「did you」は「ディジュ」と発音される。音が繋がるからです</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="92">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">この発音を知った上で、もう一度聞いてみてください</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">聞こえ方が変わりましたか？</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-2">聞こえましたか？チャットで教えてください！</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="93">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">2回目も聞こえましたか？</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">発音を知るだけで、聞こえ方は確実に変わります</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="94">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">リスニングの壁は耳の問題ではなく、<span class="highlight">発音で解決できます</span></h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1">では次に、聞けるようになるとなぜ<span class="highlight">話せるようになるのか</span>、Part3で見ていきましょう</h2>
+            <div class="divider-line fade-in fade-in-delay-2" style="margin-top: clamp(1.5rem, 3vh, 3rem);"></div>
+            <div class="flow-container">
+                <div class="flow-card done fade-in fade-in-delay-1">
+                    <div class="flow-part">Part 1</div>
+                    <h3 class="flow-title">発音 ✓</h3>
+                    <p class="flow-desc">聞き取れない・話せないの原因が発音にあることを理解し、この場で聞こえた！を体験する</p>
+                </div>
+                <div class="flow-card done fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 2</div>
+                    <h3 class="flow-title">リスニング ✓</h3>
+                    <p class="flow-desc">発音を知るだけで、今まで聞き取れなかった英語が聞こえるようになる</p>
+                </div>
+                <div class="flow-card active fade-in fade-in-delay-2">
+                    <div class="flow-part">Part 3</div>
+                    <h3 class="flow-title">スピーキング</h3>
+                    <p class="flow-desc">聞ける→話せるの回路をつなぎ、日本語を経由せず英語が口から出る感覚を掴む</p>
+                </div>
+                <div class="flow-card fade-in fade-in-delay-3">
+                    <div class="flow-part">Part 4</div>
+                    <h3 class="flow-title">ロードマップ</h3>
+                    <p class="flow-desc">何を・どの順番で・どれくらいやればいいか。最短ルートが全て分かる</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="95">
+        <div class="slide-content">
+            <p class="mid-title fade-in">Part2で発音を知るだけでリスニングが変わることを体験しました。</p>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">では<span class="highlight">なぜ、聞けるようになると話せるようになる</span>のでしょうか</h2>
+        </div>
+            <img src="assets/marina/s10_3.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="96">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">発音を知らないと、こうなります</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1">① 聞き取れないから、頭の中で日本語に置き換えようとする</div>
+                <div class="bullet-item fade-in fade-in-delay-1">② 日本語から英語を組み立てようとする</div>
+                <div class="bullet-item fade-in fade-in-delay-2">③ 文法をチェックする</div>
+                <div class="bullet-item fade-in fade-in-delay-2">④ やっと口に出す　<span class="highlight-red">← ここまで3秒以上</span></div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="97">
+        <div class="slide-content">
+            <p class="mid-title fade-in">でも実際の会話は<span class="highlight-red">0.1秒</span>のキャッチボールです。</p>
+            <div class="spacer-l"></div>
+            <div class="huge-title fade-in fade-in-delay-1"><span class="highlight-red">0.1秒</span></div>
+            <div class="spacer-l"></div>
+            <p class="subtitle fade-in fade-in-delay-2">頭の中で組み立てている間に相手はもう次の話題に行っています。だから会話の途中でフリーズしてしまうんです。</p>
+        </div>
+            <img src="assets/marina/s3_7.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide" data-slide-index="98">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">聞き取れない、組み立てが追いつかない、結局何も言えない。</h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1"><span class="highlight">これが英語を話せない本当の原因です</span></h2>
+        </div>
+            <img src="assets/marina/s8_1e.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="99">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">でも発音が分かると、聞いた英語がそのまま理解できます</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1">日本語を介さずに、<span class="highlight">そのまま口から出てくるようになる</span></h2>
+        </div>
+            <img src="assets/marina/s7_4.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="100">
+        <div class="slide-content" style="text-align: left;">
+            <p class="mid-title fade-in">つまり、発音が分かる。聞き取れる。フレーズが頭に入る。そのまま口から出る。</p>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">だから発音を知ることが、英語が話せるようになるための近道なんです。</span></h2>
+            <div class="spacer-m"></div>
+            <p class="mid-title fade-in fade-in-delay-2"></p>
+        </div>
+            <img src="assets/marina/s11_1c.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="101">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">Lisaさんも<span class="highlight">発音→リスニング→スピーキング</span>の順番を知ってから一気に変わりました。</h2>
+            <div class="spacer-l"></div>
+            <p class="mid-title fade-in fade-in-delay-1">その感覚は皆さんにも必ず来ます</p>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="102">
+        <div class="slide-content">
+            <p class="mid-title fade-in">では最後に、Part1とPart2で学んだ発音を使って</p>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">実際に声に出してみましょう</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="103">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">次のフレーズを発音してみてください</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">"What do you wanna do?"</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="104">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">次のフレーズを発音してみてください</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">"Where did you go last night?"</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="105">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">次のフレーズを発音してみてください</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">"Check it out!"</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="106">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight">発音できましたか？</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-1">チャットで教えてください！</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="107">
+        <div class="slide-content">
+            <p class="mid-title fade-in">少し前までは発音できなかった。でも今はフレーズが口から出てくる。</p>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">この経験を増やしていけばいいんです</span></h2>
+        </div>
+            <img src="assets/marina/s11_1a.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="108">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">今日手に入れたこと</h2>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in fade-in-delay-1">① 発音が英語上達の近道　— 発音を知ることで全てが繋がる</div>
+                <div class="bullet-item fade-in fade-in-delay-2">② 発音でリスニングが変わる　— 脳が発音を認識し始める</div>
+                <div class="bullet-item fade-in fade-in-delay-3">③ リスニングが変われば自然と話せる　— 聞いた英語がそのまま口から出る</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="109">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">ここまでで、発音を知れば英語が聞こえるようになり、話せるようになることが分かりました</h2>
+        </div>
+            <img src="assets/marina/s10_2.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-dark" data-slide-index="110">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">ただ、<span class="highlight">厳しい現実</span>をここで<br>お伝えしないといけません。</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="111">
+        <div class="slide-content">
+            <p class="subtitle fade-in">パッと聞き取れる発音のルールは増えた</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">でも、頭にあるのは<br><span class="highlight-red">まだ2つのルールだけ。</span></h2>
+        </div>
+            <img src="assets/marina/s5_1.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="112">
+        <div class="slide-content">
+            <p class="subtitle fade-in">知らないルールで話されたらまた止まる</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">発音のルールは<span class="highlight-red">約20種類</span></h2>
+            <p class="subtitle fade-in fade-in-delay-2">使えるフレーズも<span class="highlight-red">あと1000個</span>くらい必要</p>
+        </div>
+            <img src="assets/marina/s7_6.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="113">
+        <div class="slide-content">
+            <h2 class="big-title fade-in">では<br><span class="highlight">どうやって身につけるか</span></h2>
+        </div>
+            <img src="assets/marina/s3_3.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="114">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">結論</h2>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">自己流では難しい</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">地図も持たずに自己流で砂漠を歩くようなもので、<br>結局また無駄な勉強を始めてしまいます</p>
+        </div>
+            <img src="assets/marina/s12_1.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide" data-slide-index="115">
+        <div class="slide-content">
+            <p class="subtitle fade-in">だからこそ、どうやって発音のルールと</p>
+            <p class="subtitle fade-in fade-in-delay-1">フレーズを増やすかの</p>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-2"><span class="highlight">学習ルート</span>が必要なんです。</h2>
+        </div>
+            <img src="assets/marina/s9_1.png" class="slide-illust pos-center fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="116">
+        <div class="slide-content">
+            <p class="subtitle fade-in">発音のルールを効率よく身につけ</p>
+            <p class="subtitle fade-in fade-in-delay-1">フレーズを増やすための</p>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-2"><span class="highlight-red">完全ロードマップ</span></h2>
+            <div class="spacer-s"></div>
+            <p class="subtitle fade-in fade-in-delay-3">全て公開します</p>
+        </div>
+            <img src="assets/marina/s13_3b.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="117">
+        <div class="slide-content">
+            <h2 class="big-title fade-in">半年後、英語が話せる自分に<br><span class="highlight">変わりたいですか？</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-1">チャット欄で「準備OK」と書いてください</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="118">
+        <div class="slide-content">
+            <h2 class="big-title fade-in">では、<span class="highlight">核心に入ります</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-light" data-slide-index="119">
+        <div class="slide-content">
+            <p class="overline fade-in">最短ルート（Masa式5STEP）</p>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in">STEP1：語順だけ軽く理解する</div>
+                <div class="bullet-item fade-in fade-in-delay-1">STEP2：<span class="highlight-red">発音のルールを知り、自分でも出せるようにする</span></div>
+                <div class="bullet-item fade-in fade-in-delay-1">STEP3：表現を使って例文を作る</div>
+                <div class="bullet-item fade-in fade-in-delay-2">STEP4：会話例をたくさん聞く</div>
+                <div class="bullet-item fade-in fade-in-delay-2">STEP5：英会話で実践を行う</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="120">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">英語学習には<span class="highlight">正しい順番</span>があります</h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">失敗する人の多くは、順番を飛ばしてしまっています</p>
+        </div>
+            <img src="assets/marina/s11_1c.png" class="slide-illust pos-center fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="121">
+        <div class="slide-content">
+            <p class="overline fade-in">3つのフェーズで進んでいく</p>
+            <div class="step-flow fade-in fade-in-delay-1">
+                <div class="step-box"><div class="step-label">Phase 1</div><div class="step-text">0〜2ヶ月目<br>知識獲得期</div></div>
+                <div class="step-arrow">→</div>
+                <div class="step-box"><div class="step-label">Phase 2</div><div class="step-text">3〜4ヶ月目<br>回路形成期</div></div>
+                <div class="step-arrow">→</div>
+                <div class="step-box"><div class="step-label">Phase 3</div><div class="step-text">5〜6ヶ月目<br>実践期</div></div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="122">
+        <div class="slide-content">
+            <p class="overline fade-in">【Phase 1】0〜2ヶ月目：知識獲得期</p>
+            <h2 class="mid-title fade-in fade-in-delay-1">発音のルールや基礎フレーズを学ぶ</h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">焦ってアウトプットはNG</p>
+        </div>
+            <img src="assets/marina/s9_3.png" class="slide-illust pos-center fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="123">
+        <div class="slide-content">
+            <p class="overline fade-in">【Phase 2】3〜4ヶ月目</p>
+            <h2 class="mid-title fade-in fade-in-delay-1">覚えたフレーズを繰り返し練習して、考えなくても口から出る状態にする</h2>
+        </div>
+            <img src="assets/marina/s9_4.png" class="slide-illust pos-center fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="124">
+        <div class="slide-content">
+            <p class="overline fade-in">【Phase 3】5〜6ヶ月目</p>
+            <h2 class="mid-title fade-in fade-in-delay-1">実際の会話で英語を使い、実践力を身につける</h2>
+        </div>
+            <img src="assets/marina/s9_5.png" class="slide-illust pos-center fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="125">
+        <div class="slide-content">
+            <p class="overline fade-in">実際にうちの受講生も</p>
+            <div class="testimonial-solo fade-in fade-in-delay-1">
+                <img src="assets/とりぶちさん.png" alt="とりぶちさん">
+                <p class="testimonial-name">とりぶちさん</p>
+                <p class="testimonial-ba">Before: 英語が大の苦手<br><strong>After: 外国人に英語で接客できるように</strong></p>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="126">
+        <div class="slide-content">
+            <p class="overline fade-in">実際にうちの受講生も</p>
+            <div class="testimonial-solo fade-in fade-in-delay-1">
+                <img src="assets/Yukoさん.png" alt="Yukoさん">
+                <p class="testimonial-name">Yukoさん</p>
+                <p class="testimonial-ba">Before: 英語が通じずメンタル崩壊<br><strong>After: 海外で仕事をオファーされる</strong></p>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="127">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">他にも沢山の方が成果を出しています！</h2>
+            <div class="spacer-m"></div>
+            <img src="assets/実績.png" alt="受講生実績" class="results-img fade-in fade-in-delay-1">
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="128">
+        <div class="slide-content">
+            <p class="subtitle fade-in">どうなりたいですか？</p>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">「英語が話せて毎日が楽しい！」と<br>笑っていたい方</span></h2>
+            <div class="zoom-cta fade-in fade-in-delay-2">チャット欄で「なりたい！」と書いてください</div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="129">
+        <div class="slide-content">
+            <h2 class="big-title fade-in">ここからが<br><span class="highlight-red">今日一番重要な話です</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="130">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">今日、正しい学習の順番をお伝えしました</h2>
+            <p class="subtitle fade-in fade-in-delay-1">実際に成果を出した受講生の実例もお見せしました</p>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="131">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">よし、やり方は分かった。<br>明日から独学で頑張ろう！</h2>
+            <div class="spacer-l"></div>
+            <p class="subtitle fade-in fade-in-delay-1">そう思った方、いますよね？</p>
+        </div>
+            <img src="assets/marina/s7_6.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="132">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">その考えが</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">危険です</span></h2>
+            <div class="spacer-s"></div>
+            <p class="subtitle fade-in fade-in-delay-2">（挫折します）</p>
+        </div>
+            <img src="assets/marina/s16_4.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide" data-slide-index="133">
+        <div class="slide-content">
+            <p class="subtitle fade-in">実際、僕の受講生さんが</p>
+            <p class="subtitle fade-in fade-in-delay-1">受講前に独学で勉強し</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2"><span class="highlight-red">全く続かず挫折してしまいました</span></h2>
+        </div>
+            <img src="assets/marina/s11_3a.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="134">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">主に、<span class="highlight-red">3つの理由</span>があって...</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="135">
+        <div class="slide-content">
+            <p class="overline fade-in">理由1：完璧主義の沼にハマってしまう</p>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">自分がどこまでいったら</p>
+            <p class="subtitle fade-in fade-in-delay-1">次のフェーズに進めばいいかわからない。</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2"><span class="highlight-red">自分ひとりでは判定できない</span></h2>
+        </div>
+            <img src="assets/marina/s12_3.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="136">
+        <div class="slide-content">
+            <p class="overline fade-in">理由2：今日勉強する内容に迷う</p>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">よし！この手順で勉強しよう！と思っても...</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-2"><span class="highlight-red">あれ、今日何しよう...</span></h2>
+            <p class="subtitle fade-in fade-in-delay-3">からやることに困ってしまう</p>
+        </div>
+            <img src="assets/marina/s8_1c.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="137">
+        <div class="slide-content">
+            <p class="overline fade-in">理由3：継続できない</p>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">人間の脳は<span class="highlight-red">1日後には74%忘れる</span></p>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">サボっても誰も引き上げてくれない</p>
+            <p class="subtitle fade-in fade-in-delay-3">「今日は疲れたからいいや」</p>
+        </div>
+            <img src="assets/marina/s12_6.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide" data-slide-index="138">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight-red">結局続けられないんです。</span></h2>
+        </div>
+            <img src="assets/marina/s5_6.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="139">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">だから</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">僕たちに任せてください</span></h2>
+        </div>
+            <img src="assets/marina/s13_3d.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide" data-slide-index="140">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">あなた専用の学習プランを</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">プロのコーチ陣が作ります。</span></h2>
+        </div>
+            <img src="assets/marina/s13_3d.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="141">
+        <div class="slide-content">
+            <p class="overline fade-in">勉強会特別特典</p>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">【限定版】ロードマップ作成会</span></h2>
+            <div class="spacer-s"></div>
+            <p class="subtitle fade-in fade-in-delay-2">を実施いたします！</p>
+        </div>
+            <img src="assets/marina/s9_1.png" class="slide-illust pos-left fade-in" alt="">
+    </section>
+
+<section class="slide" data-slide-index="142">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">プロのコーチ陣があなたの英語力を診断し、<span class="highlight">なぜ話せなかったのかを特定</span>します</h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1">その上で<span class="highlight">あなた専用の学習メニュー</span>をその場で作成します</h2>
+        </div>
+            <img src="assets/marina/s13_3d.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="143">
+        <div class="slide-content">
+            <p class="subtitle fade-in">まず一ヶ月目はこの学習内容</p>
+            <p class="subtitle fade-in fade-in-delay-1">空いている時間はこの学習内容をする</p>
+            <p class="subtitle fade-in fade-in-delay-2">この段階で次へと進む</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-3">どれくらいの期間で次に進めばいいか<br><span class="highlight">あなたに特化した形でアドバイス</span>をします！</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="144">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">あなたは、そのメニューをこなすだけ</h2>
+            <div class="spacer-l"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">迷子になりようがない</span></h2>
+        </div>
+            <img src="assets/marina/s12_2.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="145">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">ここで</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">重要なお知らせ</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="146">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">この作成会</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">誰でも来ていいわけではありません</span></h2>
+        </div>
+            <img src="assets/marina/s17_1.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide bg-light" data-slide-index="147">
+        <div class="slide-content">
+            <p class="overline fade-in">以下の方は参加をお断りします</p>
+            <div class="bullet-list">
+                <div class="bullet-item fade-in">楽して聞き流すだけで話せると思っている人</div>
+                <div class="bullet-item fade-in fade-in-delay-1">無料だからとりあえずという冷やかしの人</div>
+                <div class="bullet-item fade-in fade-in-delay-2">約束を守れない人</div>
+            </div>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="148">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight-red">本気で、半年後に<br>人生を変えたい人だけ</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">来てください</p>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="149">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">この作成会は</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">枠に限りがあります</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="150">
+        <div class="slide-content">
+            <p class="subtitle fade-in">プロのコーチがあなたに合ったプランを作成</p>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">私たちが提供できる時間には</p>
+            <p class="subtitle fade-in fade-in-delay-2">どうしても物理的な限界があります</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-3"><span class="highlight-red">全員を受け入れることはできません</span></h2>
+        </div>
+            <img src="assets/marina/s15_5.png" class="slide-illust pos-center fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="151">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight-red">先着順</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">枠が埋まり次第、募集は即終了</p>
+            <p class="subtitle fade-in fade-in-delay-2">二度とこのページは開きません</p>
+        </div>
+            <img src="assets/marina/s16_6.png" class="slide-illust pos-center fade-in fade-in-delay-2" alt="">
+    </section>
+
+<section class="slide" data-slide-index="152">
+        <div class="slide-content">
+            <p class="subtitle fade-in">この1日を最後まで完走した</p>
+            <p class="subtitle fade-in fade-in-delay-1">本気の上位数%の皆さんには</p>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-2">今回<span class="highlight">無料</span>でご招待</h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="153" style="background: url('assets/marina/bg-present.png') center/cover no-repeat;">
+        <div class="slide-content" style="position: relative; z-index: 1;">
+            <p class="fade-in" style="font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 600; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid #2A274E; display: inline-block; padding-bottom: 0.3em; margin-bottom: clamp(1rem, 2vh, 2rem);">セミナー参加特典のご案内</p>
+            <h2 class="big-title fade-in fade-in-delay-1" style="color: #1d1d1f; line-height: 1.3;">中学英語すら怪しくても<br>英語が話せるようになる</h2>
+            <div class="spacer-s"></div>
+            <div style="background: #ff3b30; padding: 0.4em 1.5em; border-radius: 6px; display: inline-block;">
+                <h2 class="mid-title fade-in fade-in-delay-2" style="color: #fff; font-weight: 800;">完全ロードマップ解説動画</h2>
+            </div>
+            <div class="spacer-m"></div>
+            <h1 class="fade-in fade-in-delay-3" style="font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; color: #1d1d1f; letter-spacing: 0.05em;">プレゼント</h1>
+        </div>
+        <img src="assets/Lisaさん.jpg" class="fade-in" style="position: absolute; left: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+        <img src="assets/masa.png" class="fade-in" style="position: absolute; right: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+    </section>
+
+<section class="slide" data-slide-index="154">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight">準備はいいですか？</span></h2>
+        </div>
+            </section>
+
+<section class="slide" data-slide-index="155">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight-red">今すぐチャットのURLから<br>お申し込みください</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="156">
+        <div class="slide-content">
+            <h2 class="big-title fade-in"><span class="highlight">Q & A</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-1">質問がある方は<br>チャット欄に質問を送ってください</p>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="157">
+        <div class="slide-content">
+            <p class="subtitle fade-in">最後に</p>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">Lisaさんから皆さんへ</span></h2>
+        </div>
+    </section>
+
+<section class="slide bg-dark" data-slide-index="158">
+        <div class="slide-content">
+            <p class="subtitle fade-in">「英語できる人に代わって」と言われた私が</p>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1" style="color: var(--text-white);"><span class="highlight">今は英語で仕事をし<br>海外で生活している</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="159">
+        <div class="slide-content">
+            <p class="subtitle fade-in">もしワーホリ前の自分に一言言えるとしたら</p>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">心がワクワクする選択を<br>してください</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="160">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">今日があなたの</h2>
+            <div class="spacer-m"></div>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">スタートラインです</span></h2>
+            <div class="spacer-m"></div>
+            <p class="subtitle fade-in fade-in-delay-2">このセミナーであなたは<br>未来への希望が見えたはずです。</p>
+        </div>
+            <img src="assets/marina/s17_2.png" class="slide-illust pos-right fade-in" alt="">
+    </section>
+
+<section class="slide bg-dark" data-slide-index="161">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in" style="color: var(--text-white);">半年後、勇気を出して予約してよかったと</h2>
+            <div class="spacer-m"></div>
+            <h2 class="mid-title fade-in fade-in-delay-1" style="color: var(--text-white);"><span class="highlight">笑い合える日を楽しみにしています</span></h2>
+        </div>
+    </section>
+
+<section class="slide" data-slide-index="162">
+        <div class="slide-content">
+            <h2 class="mid-title fade-in">今回は、本当に</h2>
+            <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight">ありがとうございました！！</span></h2>
+            <div class="spacer-l"></div>
+            <p class="subtitle fade-in fade-in-delay-2">それでは個別相談でお会いしましょう！</p>
+            <p class="subtitle fade-in fade-in-delay-3">あなたの挑戦を待っています！</p>
+        </div>
+            <img src="assets/marina/s17_4.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
+    </section>
+
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const navDotsContainer = document.getElementById('navDots');
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+            dot.dataset.slide = i;
+            navDotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.nav-dot');
+        const counter = document.getElementById('slideCounter');
+        let currentSlide = 0;
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.15 }).observe(el);
+        });
+
+        slides.forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const idx = parseInt(entry.target.dataset.slideIndex);
+                        currentSlide = idx;
+                        counter.textContent = `${idx + 1} / ${totalSlides}`;
+                        dots.forEach((d, i) => {
+                            const isActive = i === idx;
+                            d.classList.toggle('active', isActive);
+                            const isDark = entry.target.classList.contains('bg-dark');
+                            d.style.background = isActive ? (isDark ? '#f5f5f7' : '#1d1d1f') : 'rgba(150,150,150,0.25)';
+                            d.style.transform = isActive ? 'scale(1.4)' : 'scale(1)';
+                        });
+                        const isDark = entry.target.classList.contains('bg-dark');
+                        counter.style.color = isDark ? 'rgba(245,245,247,0.3)' : 'rgba(100,100,100,0.3)';
+                    }
+                });
+            }, { threshold: 0.5 }).observe(s);
+        });
+
+        dots.forEach(dot => dot.addEventListener('click', () => {
+            slides[parseInt(dot.dataset.slide)].scrollIntoView({ behavior: 'smooth' });
+        }));
+
+        document.addEventListener('keydown', e => {
+            if (['ArrowDown','ArrowRight',' '].includes(e.key)) {
+                e.preventDefault();
+                if (currentSlide < totalSlides - 1) slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth' });
+            }
+            if (['ArrowUp','ArrowLeft'].includes(e.key)) {
+                e.preventDefault();
+                if (currentSlide > 0) slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+
+</body>
+</html>
