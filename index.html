@@ -83,8 +83,10 @@
         .emphasis-band { display: inline-block; background: rgba(15, 15, 16, 0.8); padding: 0.6em 1.8em; border-radius: 8px; }
 
         /* Bullet / Pain list */
-        .bullet-list { text-align: left; max-width: 1100px; margin: clamp(1.5rem, 3vh, 3rem) auto 0; }
-        .bullet-item { font-size: clamp(0.8rem, 1.3vw, 1.05rem); font-weight: 600; color: var(--text-primary); padding: 0.45em 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.7; }
+        .bullet-list { display: flex; flex-direction: column; gap: clamp(0.6rem, 1.2vh, 1rem); max-width: 900px; margin: clamp(1.5rem, 3vh, 3rem) auto 0; text-align: left; }
+        .bullet-item { display: flex; align-items: flex-start; gap: 1rem; font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 600; color: var(--text-primary); padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1rem, 2vw, 1.5rem); background: var(--bg-white); border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.03); line-height: 1.6; border: none; }
+        .bullet-item::before { content: ''; flex-shrink: 0; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin-top: 0.55em; }
+        .bullet-item.fade-in:not([style*="opacity"]) { background: var(--bg-white); box-shadow: var(--shadow-card); border-left: 4px solid var(--accent); }
         .pain-list { display: flex; flex-direction: column; gap: clamp(0.5rem, 1vh, 0.8rem); max-width: 600px; margin: 0 auto; }
         .pain-item { font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 700; color: var(--text-primary); padding: 0.6em 1.2em; background: var(--bg-white); border-radius: var(--radius); border-left: 4px solid var(--accent-red); box-shadow: var(--shadow-card); }
 
@@ -101,8 +103,12 @@
         .stat-label { font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 600; color: var(--text-tertiary); margin-top: 0.3rem; }
 
         /* Flow cards */
-        .flow-card { flex: 1; max-width: 280px; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.2rem, 2vw, 2rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); }
-        .flow-part { font-family: var(--font-body); font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+        .flow-container { display: flex; gap: clamp(1rem, 2vw, 1.5rem); justify-content: center; flex-wrap: wrap; margin-top: clamp(1.5rem, 3vh, 3rem); }
+        .flow-card { flex: 1; min-width: 220px; max-width: 280px; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, 2.5vw, 2rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease; }
+        .flow-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.08); }
+        .flow-part { font-family: var(--font-body); font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+        .flow-title { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .flow-desc { font-size: clamp(0.8rem, 1.2vw, 0.95rem); font-weight: 500; color: var(--text-secondary); line-height: 1.6; }
 
         /* Testimonial */
         .testimonial-solo { max-width: 500px; margin: 0 auto; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, 2.5vw, 2.5rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); }
