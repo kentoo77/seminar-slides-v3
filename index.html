@@ -30,16 +30,18 @@
             --font-body: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --radius: 12px;
+            --svw: 19.2px;
+            --svh: 10.8px;
             --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { overflow: hidden; height: 100vh; }
-        body { font-family: var(--font-display); color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow: hidden; height: 100vh; margin: 0; }
+        html { width: 1920px; height: 1080px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; }
+        body { font-family: var(--font-display); color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow: hidden; width: 1920px; height: 1080px; margin: 0; position: relative; transform-origin: top left; }
 
         /* ===== BASE SLIDE ===== */
         .slide {
-            width: 100vw; height: 100vh;
+            width: 1920px; height: 1080px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; position: absolute; top: 0; left: 0; overflow: hidden;
             background: var(--bg-white);
@@ -47,7 +49,7 @@
         }
         .slide.active { visibility: visible; z-index: 1; }
         .slide > * { position: relative; z-index: 1; }
-        .slide-content { max-width: 1400px; padding: 0 clamp(2rem, 4vw, 5rem); width: 100%; z-index: 1; }
+        .slide-content { max-width: 1400px; padding: 0 clamp(2rem, calc(4 * var(--svw)), 5rem); width: 100%; z-index: 1; }
 
         /* Background variants */
         .bg-light { background: var(--bg-light) !important; }
@@ -62,85 +64,85 @@
         .slide-hero .slide-content { position: relative; z-index: 1; }
 
         /* ===== TYPOGRAPHY ===== */
-        .hero-title { font-size: clamp(2.8rem, 7.5vw, 6rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.025em; }
-        .huge-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.1; }
-        .big-title { font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
-        .mid-title { font-size: clamp(1.7rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.3; }
-        .subtitle { font-size: clamp(1.2rem, 2.2vw, 1.8rem); font-weight: 600; line-height: 1.6; color: var(--text-secondary); }
-        .overline { font-family: var(--font-body); font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: clamp(1rem, 2vh, 2rem); }
+        .hero-title { font-size: clamp(2.8rem, calc(7.5 * var(--svw)), 6rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.025em; }
+        .huge-title { font-size: clamp(3rem, calc(8 * var(--svw)), 6rem); font-weight: 900; line-height: 1.1; }
+        .big-title { font-size: clamp(2.4rem, calc(6 * var(--svw)), 5rem); font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+        .mid-title { font-size: clamp(1.7rem, calc(4.5 * var(--svw)), 3.2rem); font-weight: 800; line-height: 1.3; }
+        .subtitle { font-size: clamp(1.2rem, calc(2.2 * var(--svw)), 1.8rem); font-weight: 600; line-height: 1.6; color: var(--text-secondary); }
+        .overline { font-family: var(--font-body); font-size: clamp(0.8rem, calc(1.2 * var(--svw)), 1rem); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem); }
         .highlight { color: var(--accent); font-weight: 800; }
         .highlight-red { color: var(--accent-red); font-weight: 800; }
 
-        .spacer-s { height: clamp(0.5rem, 1vh, 1rem); }
-        .spacer-m { height: clamp(1rem, 2vh, 2rem); }
-        .spacer-l { height: clamp(1.5rem, 3vh, 3rem); }
+        .spacer-s { height: clamp(0.5rem, calc(1 * var(--svh)), 1rem); }
+        .spacer-m { height: clamp(1rem, calc(2 * var(--svh)), 2rem); }
+        .spacer-l { height: clamp(1.5rem, calc(3 * var(--svh)), 3rem); }
 
         /* ===== COMPONENTS ===== */
-        .date-badge { display: inline-block; font-family: var(--font-body); font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 700; letter-spacing: 0.05em; padding: 0.6em 1.8em; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px; color: var(--text-primary); }
-        .zoom-cta { display: inline-block; margin-top: clamp(2rem, 4vh, 4rem); font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 700; color: var(--accent); padding: 0.7em 2em; background: var(--accent-soft); border-radius: 10px; }
-        .divider-line { width: 40px; height: 2px; background: var(--accent); margin: 0 auto clamp(1rem, 2vh, 2rem); border-radius: 2px; }
+        .date-badge { display: inline-block; font-family: var(--font-body); font-size: clamp(0.8rem, calc(1.2 * var(--svw)), 1rem); font-weight: 700; letter-spacing: 0.05em; padding: 0.6em 1.8em; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px; color: var(--text-primary); }
+        .zoom-cta { display: inline-block; margin-top: clamp(2rem, calc(4 * var(--svh)), 4rem); font-size: clamp(0.85rem, calc(1.3 * var(--svw)), 1.1rem); font-weight: 700; color: var(--accent); padding: 0.7em 2em; background: var(--accent-soft); border-radius: 10px; }
+        .divider-line { width: 40px; height: 2px; background: var(--accent); margin: 0 auto clamp(1rem, calc(2 * var(--svh)), 2rem); border-radius: 2px; }
         .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent); margin: 0.8rem auto; border-radius: 2px; }
 
         /* Emphasis band (dark overlay for text on photo slides) */
         .emphasis-band { display: inline-block; background: rgba(15, 15, 16, 0.8); padding: 0.6em 1.8em; border-radius: 8px; }
 
         /* Bullet / Pain list */
-        .bullet-list { display: flex; flex-direction: column; gap: clamp(0.3rem, 0.6vh, 0.5rem); max-width: 1100px; margin: clamp(1.5rem, 3vh, 3rem) auto 0; text-align: left; }
-        .bullet-item { display: flex; align-items: flex-start; gap: 0.8rem; font-size: clamp(0.8rem, 1.3vw, 1.05rem); font-weight: 600; color: var(--text-primary); padding: 0.6em 1em; background: var(--bg-white); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); line-height: 1.7; border: none; }
+        .bullet-list { display: flex; flex-direction: column; gap: clamp(0.3rem, calc(0.6 * var(--svh)), 0.5rem); max-width: 1100px; margin: clamp(1.5rem, calc(3 * var(--svh)), 3rem) auto 0; text-align: left; }
+        .bullet-item { display: flex; align-items: flex-start; gap: 0.8rem; font-size: clamp(0.8rem, calc(1.3 * var(--svw)), 1.05rem); font-weight: 600; color: var(--text-primary); padding: 0.6em 1em; background: var(--bg-white); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); line-height: 1.7; border: none; }
         .bullet-item::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-top: 0.6em; }
         .bullet-item.fade-in:not([style*="opacity"]) { background: var(--bg-white); box-shadow: var(--shadow-card); border-left: 3px solid var(--accent); }
-        .pain-list { display: flex; flex-direction: column; gap: clamp(0.5rem, 1vh, 0.8rem); max-width: 600px; margin: 0 auto; }
-        .pain-item { font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 700; color: var(--text-primary); padding: 0.6em 1.2em; background: var(--bg-white); border-radius: var(--radius); border-left: 4px solid var(--accent-red); box-shadow: var(--shadow-card); }
+        .pain-list { display: flex; flex-direction: column; gap: clamp(0.5rem, calc(1 * var(--svh)), 0.8rem); max-width: 600px; margin: 0 auto; }
+        .pain-item { font-size: clamp(1.2rem, calc(2.5 * var(--svw)), 2rem); font-weight: 700; color: var(--text-primary); padding: 0.6em 1.2em; background: var(--bg-white); border-radius: var(--radius); border-left: 4px solid var(--accent-red); box-shadow: var(--shadow-card); }
 
         /* Illustration */
-        .slide-illust { position: absolute; bottom: clamp(2rem, 4vh, 4rem); max-height: clamp(120px, 22vh, 260px); opacity: 0.75; z-index: 0; pointer-events: none; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12)); }
-        .slide-illust.pos-right { right: clamp(2rem, 3vw, 5rem); }
-        .slide-illust.pos-left { left: clamp(2rem, 3vw, 5rem); }
-        .slide-illust.pos-center { left: 50%; transform: translateX(-50%); max-width: 24vw; }
+        .slide-illust { position: absolute; bottom: clamp(2rem, calc(4 * var(--svh)), 4rem); max-height: clamp(120px, calc(22 * var(--svh)), 260px); opacity: 0.75; z-index: 0; pointer-events: none; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.12)); }
+        .slide-illust.pos-right { right: clamp(2rem, calc(3 * var(--svw)), 5rem); }
+        .slide-illust.pos-left { left: clamp(2rem, calc(3 * var(--svw)), 5rem); }
+        .slide-illust.pos-center { left: 50%; transform: translateX(-50%); max-width: calc(24 * var(--svw)); }
 
         /* Stats */
-        .stat-value { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; color: var(--accent); }
-        .stats-row { display: flex; justify-content: center; gap: clamp(1rem, 2vw, 2rem); flex-wrap: wrap; margin-top: clamp(1rem, 2vh, 2rem); }
+        .stat-value { font-size: clamp(1.4rem, calc(3 * var(--svw)), 2.2rem); font-weight: 800; color: var(--accent); }
+        .stats-row { display: flex; justify-content: center; gap: clamp(1rem, calc(2 * var(--svw)), 2rem); flex-wrap: wrap; margin-top: clamp(1rem, calc(2 * var(--svh)), 2rem); }
         .stat-item { text-align: center; }
-        .stat-label { font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 600; color: var(--text-tertiary); margin-top: 0.3rem; }
+        .stat-label { font-size: clamp(0.7rem, calc(1 * var(--svw)), 0.85rem); font-weight: 600; color: var(--text-tertiary); margin-top: 0.3rem; }
 
         /* Flow cards */
-        .flow-container { display: flex; gap: clamp(1rem, 2vw, 1.5rem); justify-content: center; flex-wrap: wrap; margin-top: clamp(1.5rem, 3vh, 3rem); }
-        .flow-card { flex: 1; min-width: 220px; max-width: 280px; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, 2.5vw, 2rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease; }
+        .flow-container { display: flex; gap: clamp(1rem, calc(2 * var(--svw)), 1.5rem); justify-content: center; flex-wrap: wrap; margin-top: clamp(1.5rem, calc(3 * var(--svh)), 3rem); }
+        .flow-card { flex: 1; min-width: 220px; max-width: 280px; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, calc(2.5 * var(--svw)), 2rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease; }
         .flow-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.08); }
-        .flow-part { font-family: var(--font-body); font-size: clamp(0.7rem, 1vw, 0.85rem); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-        .flow-title { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
-        .flow-desc { font-size: clamp(0.8rem, 1.2vw, 0.95rem); font-weight: 500; color: var(--text-secondary); line-height: 1.6; }
+        .flow-part { font-family: var(--font-body); font-size: clamp(0.7rem, calc(1 * var(--svw)), 0.85rem); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+        .flow-title { font-size: clamp(1.2rem, calc(2 * var(--svw)), 1.5rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .flow-desc { font-size: clamp(0.8rem, calc(1.2 * var(--svw)), 0.95rem); font-weight: 500; color: var(--text-secondary); line-height: 1.6; }
 
         /* Step flow (Phase timeline) */
-        .step-flow { display: flex; align-items: center; justify-content: center; gap: clamp(1rem, 2vw, 2rem); margin-top: clamp(2rem, 4vh, 4rem); }
-        .step-box { background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem); text-align: center; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); }
-        .step-label { font-family: var(--font-body); font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 800; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
-        .step-text { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; color: var(--text-primary); line-height: 1.4; }
-        .step-arrow { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--accent); }
+        .step-flow { display: flex; align-items: center; justify-content: center; gap: clamp(1rem, calc(2 * var(--svw)), 2rem); margin-top: clamp(2rem, calc(4 * var(--svh)), 4rem); }
+        .step-box { background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, calc(3 * var(--svw)), 2.5rem) clamp(2rem, calc(4 * var(--svw)), 3.5rem); text-align: center; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); }
+        .step-label { font-family: var(--font-body); font-size: clamp(0.8rem, calc(1.2 * var(--svw)), 1rem); font-weight: 800; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
+        .step-text { font-size: clamp(1.2rem, calc(2.5 * var(--svw)), 1.8rem); font-weight: 800; color: var(--text-primary); line-height: 1.4; }
+        .step-arrow { font-size: clamp(1.5rem, calc(3 * var(--svw)), 2.5rem); font-weight: 700; color: var(--accent); }
 
         /* Example comparison (教科書 vs ネイティブ) */
-        .example-row { display: flex; flex-direction: column; align-items: center; gap: clamp(0.5rem, 1vh, 1rem); margin-top: clamp(2rem, 4vh, 4rem); }
-        .example-box { background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.2rem, 2.5vw, 2rem) clamp(2rem, 5vw, 4rem); text-align: center; box-shadow: var(--shadow-card); min-width: 300px; }
-        .example-label { font-size: clamp(0.9rem, 1.3vw, 1.1rem); font-weight: 600; color: var(--text-tertiary); margin-bottom: 0.3rem; }
-        .example-text { font-size: clamp(1.5rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--text-primary); }
-        .example-arrow { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--text-tertiary); }
+        .example-row { display: flex; flex-direction: column; align-items: center; gap: clamp(0.5rem, calc(1 * var(--svh)), 1rem); margin-top: clamp(2rem, calc(4 * var(--svh)), 4rem); }
+        .example-box { background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.2rem, calc(2.5 * var(--svw)), 2rem) clamp(2rem, calc(5 * var(--svw)), 4rem); text-align: center; box-shadow: var(--shadow-card); min-width: 300px; }
+        .example-label { font-size: clamp(0.9rem, calc(1.3 * var(--svw)), 1.1rem); font-weight: 600; color: var(--text-tertiary); margin-bottom: 0.3rem; }
+        .example-text { font-size: clamp(1.5rem, calc(3.5 * var(--svw)), 2.8rem); font-weight: 800; color: var(--text-primary); }
+        .example-arrow { font-size: clamp(1.5rem, calc(3 * var(--svw)), 2.5rem); font-weight: 700; color: var(--text-tertiary); }
 
         /* Phase card images (inline) */
-        .phase-card-img { max-height: clamp(180px, 32vh, 360px); border-radius: var(--radius); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); }
+        .phase-card-img { max-height: clamp(180px, calc(32 * var(--svh)), 360px); border-radius: var(--radius); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); }
 
         /* Testimonial */
-        .testimonial-solo { max-width: 700px; margin: 0 auto; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, 2.5vw, 2.5rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); overflow: hidden; }
+        .testimonial-solo { max-width: 700px; margin: 0 auto; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, calc(2.5 * var(--svw)), 2.5rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); overflow: hidden; }
         .testimonial-solo img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 0.8rem; }
-        .testimonial-name { font-weight: 800; font-size: clamp(1.1rem, 1.8vw, 1.5rem); margin-bottom: 0.5rem; }
-        .testimonial-ba { font-size: clamp(1rem, 1.5vw, 1.3rem); color: var(--text-secondary); line-height: 1.7; font-weight: 600; }
-        .testimonial-ba strong { color: var(--accent-red); font-weight: 800; font-size: clamp(1.1rem, 1.8vw, 1.5rem); }
+        .testimonial-name { font-weight: 800; font-size: clamp(1.1rem, calc(1.8 * var(--svw)), 1.5rem); margin-bottom: 0.5rem; }
+        .testimonial-ba { font-size: clamp(1rem, calc(1.5 * var(--svw)), 1.3rem); color: var(--text-secondary); line-height: 1.7; font-weight: 600; }
+        .testimonial-ba strong { color: var(--accent-red); font-weight: 800; font-size: clamp(1.1rem, calc(1.8 * var(--svw)), 1.5rem); }
 
         /* Profile image */
-        .profile-img { width: clamp(90px, 12vw, 130px); height: clamp(90px, 12vw, 130px); border-radius: 50%; object-fit: cover; margin: 0 auto clamp(1rem, 1.5vh, 1.5rem); display: block; box-shadow: 0 0 0 3px var(--accent), 0 4px 16px rgba(0,0,0,0.12); }
+        .profile-img { width: clamp(90px, calc(12 * var(--svw)), 130px); height: clamp(90px, calc(12 * var(--svw)), 130px); border-radius: 50%; object-fit: cover; margin: 0 auto clamp(1rem, calc(1.5 * var(--svh)), 1.5rem); display: block; box-shadow: 0 0 0 3px var(--accent), 0 4px 16px rgba(0,0,0,0.12); }
 
         /* Career list */
-        .lisa-career-list { list-style: none; padding: 0; border-left: 3px solid var(--accent); padding-left: clamp(0.75rem, 1.5vw, 1.2rem); }
+        .lisa-career-list { list-style: none; padding: 0; border-left: 3px solid var(--accent); padding-left: clamp(0.75rem, calc(1.5 * var(--svw)), 1.2rem); }
 
         /* Results image */
         .results-img { width: 100%; max-width: 900px; border-radius: var(--radius); margin: 0 auto; display: block; box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
@@ -149,10 +151,10 @@
         .resume-banner, .resume-yes, .resume-no { z-index: 80; }
 
         /* ===== NAV ===== */
-        .nav-dots { position: fixed; right: clamp(1rem, 2vw, 2.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 100; }
+        .nav-dots { position: fixed; right: clamp(1rem, calc(2 * var(--svw)), 2.5rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 100; }
         .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(150,150,150,0.2); border: none; cursor: pointer; transition: all 0.3s ease; padding: 0; }
         .nav-dot.active { background: var(--accent); transform: scale(1.4); }
-        .slide-counter { position: fixed; bottom: clamp(1.5rem, 2vh, 2rem); right: clamp(1.5rem, 3vw, 3rem); font-family: var(--font-body); font-size: 0.75rem; color: rgba(100,100,100,0.25); z-index: 100; }
+        .slide-counter { position: fixed; bottom: clamp(1.5rem, calc(2 * var(--svh)), 2rem); right: clamp(1.5rem, calc(3 * var(--svw)), 3rem); font-family: var(--font-body); font-size: 0.75rem; color: rgba(100,100,100,0.25); z-index: 100; }
 
         /* ===== ANIMATIONS ===== */
         .fade-in { opacity: 1; transform: none; }
@@ -242,7 +244,7 @@
 
 <section class="slide bg-light" data-slide-index="8">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">このセミナーで手に入ること</h2>
             <div class="bullet-list">
                 <div class="bullet-item fade-in">TOEIC900点でも海外で通じなかった人が、<br>なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
             </div>
@@ -251,7 +253,7 @@
 
 <section class="slide bg-light" data-slide-index="9">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">このセミナーで手に入ること</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、<br>なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
                 <div class="bullet-item fade-in">何年も勉強してきたのに聞き取れない本当の原因が分かり<br>「耳のせいじゃなかったんだ」と腑に落ちる</div>
@@ -261,7 +263,7 @@
 
 <section class="slide bg-light" data-slide-index="10">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">このセミナーで手に入ること</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、<br>なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
                 <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり<br>「耳のせいじゃなかったんだ」と腑に落ちる</div>
@@ -272,7 +274,7 @@
 
 <section class="slide bg-light" data-slide-index="11">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">このセミナーで手に入ること</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、<br>なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
                 <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり<br>「耳のせいじゃなかったんだ」と腑に落ちる</div>
@@ -284,7 +286,7 @@
 
 <section class="slide bg-light" data-slide-index="12">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">このセミナーで手に入ること</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、<br>なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
                 <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり<br>「耳のせいじゃなかったんだ」と腑に落ちる</div>
@@ -297,7 +299,7 @@
 
 <section class="slide bg-light" data-slide-index="13">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">このセミナーで手に入ること</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">このセミナーで手に入ること</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">TOEIC900点でも海外で通じなかった人が、<br>なぜ今は英語で仕事しているのか ── その全プロセスが分かる</div>
                 <div class="bullet-item" style="opacity: 0.5;">何年も勉強してきたのに聞き取れない本当の原因が分かり<br>「耳のせいじゃなかったんだ」と腑に落ちる</div>
@@ -319,7 +321,7 @@
 
 <section class="slide bg-light" data-slide-index="15">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">特にこんな方の役に立つ内容です</h2>
             <div class="bullet-list">
                 <div class="bullet-item fade-in">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、<br>結局"Thank you"と"Sorry"で乗り切ってしまう</div>
             </div>
@@ -328,7 +330,7 @@
 
 <section class="slide bg-light" data-slide-index="16">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">特にこんな方の役に立つ内容です</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、<br>結局"Thank you"と"Sorry"で乗り切ってしまう</div>
                 <div class="bullet-item fade-in">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。<br>だけど英語を話せる自分を、まだ諦めきれない</div>
@@ -338,7 +340,7 @@
 
 <section class="slide bg-light" data-slide-index="17">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">特にこんな方の役に立つ内容です</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、<br>結局"Thank you"と"Sorry"で乗り切ってしまう</div>
                 <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。<br>だけど英語を話せる自分を、まだ諦めきれない</div>
@@ -349,7 +351,7 @@
 
 <section class="slide bg-light" data-slide-index="18">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">特にこんな方の役に立つ内容です</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、<br>結局"Thank you"と"Sorry"で乗り切ってしまう</div>
                 <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。<br>だけど英語を話せる自分を、まだ諦めきれない</div>
@@ -361,7 +363,7 @@
 
 <section class="slide bg-light" data-slide-index="19">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">特にこんな方の役に立つ内容です</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、<br>結局"Thank you"と"Sorry"で乗り切ってしまう</div>
                 <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。<br>だけど英語を話せる自分を、まだ諦めきれない</div>
@@ -374,7 +376,7 @@
 
 <section class="slide bg-light" data-slide-index="20">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">特にこんな方の役に立つ内容です</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、<br>結局"Thank you"と"Sorry"で乗り切ってしまう</div>
                 <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。<br>だけど英語を話せる自分を、まだ諦めきれない</div>
@@ -388,7 +390,7 @@
 
 <section class="slide bg-light" data-slide-index="21">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">特にこんな方の役に立つ内容です</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">特にこんな方の役に立つ内容です</h2>
             <div class="bullet-list">
                 <div class="bullet-item" style="opacity: 0.5;">英語を何年も勉強してきたのに、いざ話す場面になると頭が真っ白になり、<br>結局"Thank you"と"Sorry"で乗り切ってしまう</div>
                 <div class="bullet-item" style="opacity: 0.5;">英会話教室、アプリ、YouTube── 色々やってきたけどどれも中途半端で終わった。<br>だけど英語を話せる自分を、まだ諦めきれない</div>
@@ -470,17 +472,17 @@
 
 <section class="slide" data-slide-index="27" style="background: url('assets/marina/bg-present.png') center/110% no-repeat #333;">
         <div class="slide-content" style="position: relative; z-index: 1;">
-            <p class="fade-in" style="font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 600; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.3em; margin-bottom: clamp(1rem, 2vh, 2rem);">セミナー参加特典のご案内</p>
+            <p class="fade-in" style="font-size: clamp(0.8rem, calc(1.2 * var(--svw)), 1rem); font-weight: 600; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.3em; margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">セミナー参加特典のご案内</p>
             <h2 class="big-title fade-in fade-in-delay-1" style="color: #1d1d1f; line-height: 1.3;">中学英語すら怪しくても<br>英語が話せるようになる</h2>
             <div class="spacer-s"></div>
             <div style="background: var(--accent-red); padding: 0.4em 1.5em; border-radius: 6px; display: inline-block;">
                 <h2 class="mid-title fade-in fade-in-delay-2" style="color: #fff; font-weight: 800;">完全ロードマップ解説動画</h2>
             </div>
             <div class="spacer-m"></div>
-            <h1 class="fade-in fade-in-delay-3" style="font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; color: #1d1d1f; letter-spacing: 0.05em;">プレゼント</h1>
+            <h1 class="fade-in fade-in-delay-3" style="font-size: clamp(3rem, calc(8 * var(--svw)), 7rem); font-weight: 900; color: #1d1d1f; letter-spacing: 0.05em;">プレゼント</h1>
         </div>
-        <img src="assets/Lisaさん.jpg" class="fade-in" style="position: absolute; left: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
-        <img src="assets/masa.png" class="fade-in" style="position: absolute; right: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+        <img src="assets/Lisaさん.jpg" class="fade-in" style="position: absolute; left: clamp(10rem, calc(18 * var(--svw)), 18rem); bottom: clamp(5rem, calc(10 * var(--svh)), 10rem); width: clamp(80px, calc(10 * var(--svw)), 120px); height: clamp(80px, calc(10 * var(--svw)), 120px); border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+        <img src="assets/masa.png" class="fade-in" style="position: absolute; right: clamp(10rem, calc(18 * var(--svw)), 18rem); bottom: clamp(5rem, calc(10 * var(--svh)), 10rem); width: clamp(80px, calc(10 * var(--svw)), 120px); height: clamp(80px, calc(10 * var(--svw)), 120px); border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
     </section>
 
 <section class="slide" data-slide-index="28">
@@ -520,7 +522,7 @@
                     <li>カフェ・飲食店勤務</li>
                 </ul>
             </div>
-            <div class="stats-row fade-in fade-in-delay-3" style="margin-top: clamp(0.75rem, 1.5vh, 1.5rem);">
+            <div class="stats-row fade-in fade-in-delay-3" style="margin-top: clamp(0.75rem, calc(1.5 * var(--svh)), 1.5rem);">
                 <div class="stat-item"><div class="stat-value">TOEIC 900</div></div>
                 <div class="stat-item"><div class="stat-value">IELTS 6.5</div></div>
             </div>
@@ -995,7 +997,7 @@
 <section class="slide bg-light" data-slide-index="81">
         <div class="slide-content">
             <h2 class="mid-title fade-in">発音が分かると、<br>リスニングはどう変わるのか。<br><span class="highlight">次のパートで詳しく<br>見ていきましょう</span></h2>
-            <div class="divider-line fade-in fade-in-delay-1" style="margin-top: clamp(1.5rem, 3vh, 3rem);"></div>
+            <div class="divider-line fade-in fade-in-delay-1" style="margin-top: clamp(1.5rem, calc(3 * var(--svh)), 3rem);"></div>
             <div class="flow-container">
                 <div class="flow-card done fade-in fade-in-delay-1">
                     <div class="flow-part">Part 1</div>
@@ -1121,7 +1123,7 @@
 <section class="slide" data-slide-index="94">
         <div class="slide-content">
             <h2 class="mid-title fade-in">リスニングの壁は耳の問題ではなく、<br><span class="highlight">発音で解決できます</span></h2>
-            <div class="divider-line fade-in fade-in-delay-1" style="margin-top: clamp(1.5rem, 3vh, 3rem);"></div>
+            <div class="divider-line fade-in fade-in-delay-1" style="margin-top: clamp(1.5rem, calc(3 * var(--svh)), 3rem);"></div>
             <div class="flow-container">
                 <div class="flow-card done fade-in fade-in-delay-1">
                     <div class="flow-part">Part 1</div>
@@ -1316,7 +1318,7 @@
 
 <section class="slide" data-slide-index="114">
         <div class="slide-content">
-            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, 2vh, 2rem);">結論</h2>
+            <h2 class="mid-title fade-in" style="margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">結論</h2>
             <h2 class="big-title fade-in fade-in-delay-1"><span class="highlight-red">自己流では難しい</span></h2>
             <div class="spacer-m"></div>
             <p class="subtitle fade-in fade-in-delay-2">地図も持たずに自己流で砂漠を歩くようなもので、<br>結局また無駄な勉強を始めてしまいます</p>
@@ -1662,7 +1664,7 @@
             <p class="subtitle fade-in fade-in-delay-1">枠が埋まり次第、募集は即終了</p>
             <p class="subtitle fade-in fade-in-delay-2">二度とこのページは開きません</p>
             <div class="spacer-m"></div>
-            <img src="assets/marina/s16_6.png" class="fade-in fade-in-delay-2" style="max-height: 28vh; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));" alt="">
+            <img src="assets/marina/s16_6.png" class="fade-in fade-in-delay-2" style="max-height: calc(28 * var(--svh)); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));" alt="">
         </div>
     </section>
 
@@ -1677,17 +1679,17 @@
 
 <section class="slide" data-slide-index="153" style="background: url('assets/marina/bg-present.png') center/110% no-repeat #333;">
         <div class="slide-content" style="position: relative; z-index: 1;">
-            <p class="fade-in" style="font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 600; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.3em; margin-bottom: clamp(1rem, 2vh, 2rem);">セミナー参加特典のご案内</p>
+            <p class="fade-in" style="font-size: clamp(0.8rem, calc(1.2 * var(--svw)), 1rem); font-weight: 600; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.3em; margin-bottom: clamp(1rem, calc(2 * var(--svh)), 2rem);">セミナー参加特典のご案内</p>
             <h2 class="big-title fade-in fade-in-delay-1" style="color: #1d1d1f; line-height: 1.3;">中学英語すら怪しくても<br>英語が話せるようになる</h2>
             <div class="spacer-s"></div>
             <div style="background: var(--accent-red); padding: 0.4em 1.5em; border-radius: 6px; display: inline-block;">
                 <h2 class="mid-title fade-in fade-in-delay-2" style="color: #fff; font-weight: 800;">完全ロードマップ解説動画</h2>
             </div>
             <div class="spacer-m"></div>
-            <h1 class="fade-in fade-in-delay-3" style="font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; color: #1d1d1f; letter-spacing: 0.05em;">プレゼント</h1>
+            <h1 class="fade-in fade-in-delay-3" style="font-size: clamp(3rem, calc(8 * var(--svw)), 7rem); font-weight: 900; color: #1d1d1f; letter-spacing: 0.05em;">プレゼント</h1>
         </div>
-        <img src="assets/Lisaさん.jpg" class="fade-in" style="position: absolute; left: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
-        <img src="assets/masa.png" class="fade-in" style="position: absolute; right: clamp(10rem, 18vw, 18rem); bottom: clamp(5rem, 10vh, 10rem); width: clamp(80px, 10vw, 120px); height: clamp(80px, 10vw, 120px); border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+        <img src="assets/Lisaさん.jpg" class="fade-in" style="position: absolute; left: clamp(10rem, calc(18 * var(--svw)), 18rem); bottom: clamp(5rem, calc(10 * var(--svh)), 10rem); width: clamp(80px, calc(10 * var(--svw)), 120px); height: clamp(80px, calc(10 * var(--svw)), 120px); border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
+        <img src="assets/masa.png" class="fade-in" style="position: absolute; right: clamp(10rem, calc(18 * var(--svw)), 18rem); bottom: clamp(5rem, calc(10 * var(--svh)), 10rem); width: clamp(80px, calc(10 * var(--svw)), 120px); height: clamp(80px, calc(10 * var(--svw)), 120px); border-radius: 50%; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.15);" alt="">
     </section>
 
 <section class="slide" data-slide-index="154">
@@ -2008,8 +2010,8 @@
 
             const rawCX = elInitialRect.left + elInitialRect.width / 2 + dx;
             const rawCY = elInitialRect.top + elInitialRect.height / 2 + dy;
-            const vpCX = window.innerWidth / 2;
-            const vpCY = window.innerHeight / 2;
+            const vpCX = 960;
+            const vpCY = 540;
             const rawDiffX = Math.abs(rawCX - vpCX);
             const rawDiffY = Math.abs(rawCY - vpCY);
 
@@ -2192,6 +2194,20 @@
                 if (raw) applyPositions(JSON.parse(raw));
             } catch { }
         }
+        // ===== FIXED CANVAS 1920x1080 =====
+        const CANVAS_W = 1920, CANVAS_H = 1080;
+        function fitCanvas() {
+            const scale = Math.min(
+                window.innerWidth  / CANVAS_W,
+                window.innerHeight / CANVAS_H
+            );
+            const ox = (window.innerWidth  - CANVAS_W * scale) / 2;
+            const oy = (window.innerHeight - CANVAS_H * scale) / 2;
+            document.body.style.transform = `translate(${ox}px,${oy}px) scale(${scale})`;
+        }
+        window.addEventListener('resize', fitCanvas);
+        fitCanvas();
+
         loadPositions();
 
         document.addEventListener('keydown', e => {
