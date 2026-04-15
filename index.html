@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1920">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>脱・通じない英語｜発音を身につけ、"話せる自分へ" — 全スライド</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,12 +34,12 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { width: 1920px; height: 100vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; }
-        body { font-family: var(--font-display); color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow: hidden; width: 1920px; height: 1080px; margin: 0; flex-shrink: 0; position: relative; }
+        html { overflow: hidden; height: 100vh; }
+        body { font-family: var(--font-display); color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow: hidden; height: 100vh; margin: 0; }
 
         /* ===== BASE SLIDE ===== */
         .slide {
-            width: 1920px; height: 1080px;
+            width: 100vw; height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; position: absolute; top: 0; left: 0; overflow: hidden;
             background: var(--bg-white);
@@ -2008,8 +2008,8 @@
 
             const rawCX = elInitialRect.left + elInitialRect.width / 2 + dx;
             const rawCY = elInitialRect.top + elInitialRect.height / 2 + dy;
-            const vpCX = 960;
-            const vpCY = 540;
+            const vpCX = window.innerWidth / 2;
+            const vpCY = window.innerHeight / 2;
             const rawDiffX = Math.abs(rawCX - vpCX);
             const rawDiffY = Math.abs(rawCY - vpCY);
 
