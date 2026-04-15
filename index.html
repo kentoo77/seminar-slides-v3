@@ -112,6 +112,13 @@
         .flow-title { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
         .flow-desc { font-size: clamp(0.8rem, 1.2vw, 0.95rem); font-weight: 500; color: var(--text-secondary); line-height: 1.6; }
 
+        /* Step flow (Phase timeline) */
+        .step-flow { display: flex; align-items: center; justify-content: center; gap: clamp(1rem, 2vw, 2rem); margin-top: clamp(2rem, 4vh, 4rem); }
+        .step-box { background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem); text-align: center; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); }
+        .step-label { font-family: var(--font-body); font-size: clamp(0.8rem, 1.2vw, 1rem); font-weight: 800; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
+        .step-text { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; color: var(--text-primary); line-height: 1.4; }
+        .step-arrow { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--accent); }
+
         /* Testimonial */
         .testimonial-solo { max-width: 500px; margin: 0 auto; background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.5rem, 2.5vw, 2.5rem); text-align: left; box-shadow: var(--shadow-card); border-top: 3px solid var(--accent); overflow: hidden; }
         .testimonial-solo img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 0.8rem; }
