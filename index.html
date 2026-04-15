@@ -1004,7 +1004,9 @@
 
 <section class="slide" data-slide-index="82">
         <div class="slide-content">
-            <h2 class="mid-title fade-in">Part1で発音を知るだけで<br>聞こえ方が変わることを体験しました。<br>ではなぜ、<span class="highlight">発音が分かると<br>リスニングができるようになるのか</span>、<br>その仕組みを見ていきましょう</h2>
+            <h2 class="mid-title fade-in">Part1で発音を知るだけで<br>聞こえ方が変わることを体験しました。</h2>
+            <div class="spacer-l"></div>
+            <h2 class="mid-title fade-in">ではなぜ、<span class="highlight">発音が分かると<br>リスニングができるようになるのか</span>、<br>その仕組みを見ていきましょう</h2>
         </div>
             <img src="assets/marina/s10_2.png" class="slide-illust pos-right fade-in fade-in-delay-2" alt="">
     </section>
@@ -1801,8 +1803,110 @@
         });
 
         document.addEventListener('click', e => {
+            if (editMode) return;
             if (e.target.closest('.nav-dot, a, button, .zoom-cta')) return;
             goToSlide(currentSlide + 1);
+        });
+
+        // ========== EDIT MODE (press E to toggle) ==========
+        let editMode = false;
+        const editBanner = document.createElement('div');
+        editBanner.id = 'editBanner';
+        editBanner.innerHTML = '✏️ 編集モード ON — 要素をドラッグで移動 / Eキーで終了';
+        editBanner.style.cssText = 'display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:#e74f00;color:#fff;text-align:center;padding:8px;font-size:14px;font-weight:700;';
+        document.body.appendChild(editBanner);
+
+        function toggleEditMode() {
+            editMode = !editMode;
+            editBanner.style.display = editMode ? 'block' : 'none';
+            document.body.style.cursor = editMode ? 'move' : '';
+            if (!editMode) savePositions();
+        }
+
+        let dragEl = null, dragStartX, dragStartY, elStartX, elStartY;
+
+        document.addEventListener('mousedown', e => {
+            if (!editMode) return;
+            const target = e.target.closest('.slide-content > *, .slide-illust, .spacer-s, .spacer-m, .spacer-l');
+            if (!target) return;
+            e.preventDefault();
+            e.stopPropagation();
+            dragEl = target;
+            if (!dragEl.style.position || dragEl.style.position === 'static') {
+                dragEl.style.position = 'relative';
+            }
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            elStartX = parseFloat(dragEl.style.left) || 0;
+            elStartY = parseFloat(dragEl.style.top) || 0;
+            dragEl.style.outline = '2px dashed #e74f00';
+            dragEl.style.zIndex = '100';
+        });
+
+        document.addEventListener('mousemove', e => {
+            if (!dragEl) return;
+            const dx = e.clientX - dragStartX;
+            const dy = e.clientY - dragStartY;
+            dragEl.style.left = (elStartX + dx) + 'px';
+            dragEl.style.top = (elStartY + dy) + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (dragEl) {
+                dragEl.style.outline = '';
+                dragEl.style.zIndex = '';
+                dragEl = null;
+            }
+        });
+
+        function savePositions() {
+            const data = {};
+            slides.forEach((slide, si) => {
+                const moved = slide.querySelectorAll('[style*="top:"], [style*="left:"]');
+                if (moved.length === 0) return;
+                data[si] = [];
+                moved.forEach((el, ei) => {
+                    data[si].push({
+                        idx: Array.from(el.parentElement.children).indexOf(el),
+                        tag: el.tagName,
+                        top: el.style.top,
+                        left: el.style.left
+                    });
+                });
+            });
+            if (Object.keys(data).length > 0) {
+                localStorage.setItem('slide-positions', JSON.stringify(data));
+                console.log('Positions saved to localStorage', data);
+            }
+        }
+
+        function loadPositions() {
+            const raw = localStorage.getItem('slide-positions');
+            if (!raw) return;
+            const data = JSON.parse(raw);
+            Object.entries(data).forEach(([si, items]) => {
+                const slide = slides[parseInt(si)];
+                if (!slide) return;
+                items.forEach(item => {
+                    const children = slide.querySelectorAll(item.tag);
+                    const el = Array.from(slide.querySelectorAll('*')).find((e, i) => {
+                        return Array.from(e.parentElement.children).indexOf(e) === item.idx && e.tagName === item.tag;
+                    });
+                    if (el) {
+                        el.style.position = 'relative';
+                        el.style.top = item.top;
+                        el.style.left = item.left;
+                    }
+                });
+            });
+        }
+        loadPositions();
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'e' || e.key === 'E') {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                toggleEditMode();
+            }
         });
     </script>
 
