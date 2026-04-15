@@ -1820,13 +1820,110 @@
             goToSlide(currentSlide + 1);
         });
 
-        // ========== EDIT MODE (press E to toggle) ==========
+        // ========== EDIT MODE ==========
         let editMode = false;
         let selectedEl = null;
 
+        // --- Undo stack ---
+        const undoStack = [];
+        const MAX_UNDO = 30;
+
+        function captureState() {
+            const state = {};
+            slides.forEach((slide, si) => {
+                const items = [];
+                slide.querySelectorAll('[style]').forEach(el => {
+                    if (!el.style.top && !el.style.left && !el.style.transform) return;
+                    items.push({
+                        idx: Array.from(el.parentElement.children).indexOf(el),
+                        tag: el.tagName,
+                        top: el.style.top || '',
+                        left: el.style.left || '',
+                        transform: el.style.transform || '',
+                        position: el.style.position || '',
+                    });
+                });
+                if (items.length > 0) state[si] = items;
+            });
+            return state;
+        }
+
+        function pushUndo() {
+            undoStack.push(captureState());
+            if (undoStack.length > MAX_UNDO) undoStack.shift();
+            updateUndoBtn();
+        }
+
+        function applyState(state) {
+            // Clear all current edits
+            slides.forEach(slide => {
+                slide.querySelectorAll('[style]').forEach(el => {
+                    el.style.top = '';
+                    el.style.left = '';
+                    el.style.transform = '';
+                    el.style.position = '';
+                    el.style.zIndex = '';
+                    el.style.outline = '';
+                });
+            });
+            // Apply saved state
+            Object.entries(state).forEach(([si, items]) => {
+                const slide = slides[parseInt(si)];
+                if (!slide) return;
+                items.forEach(item => {
+                    const el = Array.from(slide.querySelectorAll('*')).find(e =>
+                        Array.from(e.parentElement.children).indexOf(e) === item.idx && e.tagName === item.tag
+                    );
+                    if (el) {
+                        if (item.position) el.style.position = item.position;
+                        if (item.top)  el.style.top  = item.top;
+                        if (item.left) el.style.left = item.left;
+                        if (item.transform) el.style.transform = item.transform;
+                    }
+                });
+            });
+        }
+
+        function undo() {
+            if (undoStack.length === 0) return;
+            const state = undoStack.pop();
+            applyState(state);
+            updateUndoBtn();
+            debouncedSave();
+        }
+
+        function updateUndoBtn() {
+            if (undoBtn) {
+                undoBtn.disabled = undoStack.length === 0;
+                undoBtn.style.opacity = undoStack.length === 0 ? '0.4' : '1';
+            }
+        }
+
+        // --- Save indicator ---
+        let saveTimer;
+        let undoBtn;
+
         // Banner
         const editBanner = document.createElement('div');
-        editBanner.innerHTML = '✏️ 編集モード — ドラッグ:移動 / ホイール:拡大縮小 / Shift+E:終了';
+        editBanner.style.cssText = 'display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:#e74f00;color:#fff;display:none;align-items:center;justify-content:center;gap:16px;padding:8px 16px;font-size:14px;font-weight:700;';
+
+        const bannerText = document.createElement('span');
+        bannerText.textContent = '✏️ 編集モード — ドラッグ:移動 / 右下ハンドル:拡縮 / Ctrl+Z:戻す / Shift+E:終了';
+
+        undoBtn = document.createElement('button');
+        undoBtn.textContent = '↩ 戻す';
+        undoBtn.style.cssText = 'background:#fff;color:#e74f00;border:none;border-radius:4px;padding:4px 12px;font-weight:700;cursor:pointer;font-size:13px;';
+        undoBtn.disabled = true;
+        undoBtn.style.opacity = '0.4';
+        undoBtn.addEventListener('click', undo);
+
+        const saveStatus = document.createElement('span');
+        saveStatus.style.cssText = 'font-size:12px;opacity:0.85;';
+
+        editBanner.appendChild(bannerText);
+        editBanner.appendChild(undoBtn);
+        editBanner.appendChild(saveStatus);
+        document.body.appendChild(editBanner);
         editBanner.style.cssText = 'display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:#e74f00;color:#fff;text-align:center;padding:8px;font-size:14px;font-weight:700;';
         document.body.appendChild(editBanner);
 
@@ -1840,7 +1937,7 @@
 
         function toggleEditMode() {
             editMode = !editMode;
-            editBanner.style.display = editMode ? 'block' : 'none';
+            editBanner.style.display = editMode ? 'flex' : 'none';
             guideH.style.display = editMode ? 'block' : 'none';
             guideV.style.display = editMode ? 'block' : 'none';
             document.body.style.cursor = editMode ? 'crosshair' : '';
@@ -1871,6 +1968,7 @@
             selectedEl = target;
             selectedEl.style.outline = '2px dashed #e74f00';
 
+            pushUndo();
             dragEl = target;
             const pos = window.getComputedStyle(dragEl).position;
             const slideEl = dragEl.closest('.slide');
@@ -1959,6 +2057,7 @@
                 snappedX = false; snappedY = false;
                 guideH.style.opacity = '0.3'; guideH.style.background = '#ccc';
                 guideV.style.opacity = '0.3'; guideV.style.background = '#ccc';
+                debouncedSave();
             }
         });
 
@@ -1985,6 +2084,7 @@
             if (!selectedEl) return;
             e.preventDefault();
             e.stopPropagation();
+            pushUndo();
             resizing = true;
             resizeStartX = e.clientX;
             resizeStartY = e.clientY;
@@ -2002,15 +2102,17 @@
         });
 
         document.addEventListener('mouseup', () => {
-            if (resizing) resizing = false;
+            if (resizing) {
+                resizing = false;
+                debouncedSave();
+            }
         });
 
-        function savePositions() {
+        function collectPositions() {
             const data = {};
             slides.forEach((slide, si) => {
-                const moved = slide.querySelectorAll('[style]');
                 const items = [];
-                moved.forEach(el => {
+                slide.querySelectorAll('[style]').forEach(el => {
                     const hasPos = el.style.top || el.style.left;
                     const hasScale = el.style.transform?.includes('scale');
                     if (!hasPos && !hasScale) return;
@@ -2020,21 +2122,44 @@
                         cls: el.className.split(' ')[0],
                         top: el.style.top || '',
                         left: el.style.left || '',
-                        transform: el.style.transform || ''
+                        transform: el.style.transform || '',
                     });
                 });
                 if (items.length > 0) data[si] = items;
             });
-            if (Object.keys(data).length > 0) {
-                localStorage.setItem('slide-positions', JSON.stringify(data));
-                console.log('Positions saved', data);
+            return data;
+        }
+
+        function setSaveStatus(msg) {
+            if (saveStatus) { saveStatus.textContent = msg; }
+        }
+
+        async function savePositions() {
+            const data = collectPositions();
+            setSaveStatus('保存中…');
+            try {
+                const r = await fetch('/api/positions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                if (r.ok) {
+                    setSaveStatus('✓ 保存完了');
+                    setTimeout(() => setSaveStatus(''), 3000);
+                } else {
+                    setSaveStatus('⚠ 保存失敗');
+                }
+            } catch {
+                setSaveStatus('⚠ ネットワークエラー');
             }
         }
 
-        function loadPositions() {
-            const raw = localStorage.getItem('slide-positions');
-            if (!raw) return;
-            const data = JSON.parse(raw);
+        function debouncedSave() {
+            clearTimeout(saveTimer);
+            saveTimer = setTimeout(savePositions, 1500);
+        }
+
+        function applyPositions(data) {
             Object.entries(data).forEach(([si, items]) => {
                 const slide = slides[parseInt(si)];
                 if (!slide) return;
@@ -2044,12 +2169,28 @@
                     );
                     if (el) {
                         if (item.top || item.left) el.style.position = 'relative';
-                        if (item.top) el.style.top = item.top;
+                        if (item.top)  el.style.top  = item.top;
                         if (item.left) el.style.left = item.left;
                         if (item.transform) el.style.transform = item.transform;
                     }
                 });
             });
+        }
+
+        async function loadPositions() {
+            try {
+                const r = await fetch('/api/positions');
+                if (r.ok) {
+                    const data = await r.json();
+                    applyPositions(data);
+                    return;
+                }
+            } catch { /* fall through */ }
+            // fallback: localStorage
+            try {
+                const raw = localStorage.getItem('slide-positions');
+                if (raw) applyPositions(JSON.parse(raw));
+            } catch { }
         }
         loadPositions();
 
@@ -2058,12 +2199,19 @@
                 e.preventDefault();
                 toggleEditMode();
             }
+            // Ctrl+Z undo
+            if (editMode && e.key === 'z' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                undo();
+            }
             // Delete position reset
             if (editMode && selectedEl && (e.key === 'Delete' || e.key === 'Backspace')) {
+                pushUndo();
                 selectedEl.style.top = '';
                 selectedEl.style.left = '';
                 selectedEl.style.transform = '';
                 selectedEl.style.position = '';
+                debouncedSave();
             }
         });
     </script>
