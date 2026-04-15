@@ -1854,10 +1854,11 @@
         const EDIT_TARGETS = 'h2, p, img, .slide-illust, .bullet-item, .flow-card, .step-box, .testimonial-solo, .zoom-cta, .example-box, .phase-card-img, .emphasis-band, .pain-item, .divider-line, .accent-bar, .date-badge, .slide-content';
 
         let dragEl = null, dragStartX, dragStartY, elStartLeft, elStartTop;
-        const SNAP_DIST = 12;
-        const SNAP_RELEASE = 20;
+        let elInitialRect = null; // element rect at drag start (before any movement)
+        const SNAP_DIST = 15;
+        const SNAP_RELEASE = 30;
         let snappedX = false, snappedY = false;
-        let snapOffsetX = 0, snapOffsetY = 0;
+        let snapCorrectionX = 0, snapCorrectionY = 0;
 
         document.addEventListener('mousedown', e => {
             if (!editMode) return;
@@ -1877,59 +1878,52 @@
             dragStartY = e.clientY;
             elStartLeft = parseFloat(dragEl.style.left) || 0;
             elStartTop = parseFloat(dragEl.style.top) || 0;
+            elInitialRect = dragEl.getBoundingClientRect();
             dragEl.style.zIndex = '100';
             snappedX = false; snappedY = false;
+            snapCorrectionX = 0; snapCorrectionY = 0;
         });
 
         document.addEventListener('mousemove', e => {
             if (!dragEl) return;
-            const rawLeft = elStartLeft + (e.clientX - dragStartX);
-            const rawTop = elStartTop + (e.clientY - dragStartY);
+            const dx = e.clientX - dragStartX;
+            const dy = e.clientY - dragStartY;
 
-            dragEl.style.left = rawLeft + 'px';
-            dragEl.style.top = rawTop + 'px';
-
-            const rect = dragEl.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
+            // Raw position = where element WOULD be without snap
+            const rawCX = elInitialRect.left + elInitialRect.width / 2 + dx;
+            const rawCY = elInitialRect.top + elInitialRect.height / 2 + dy;
             const vpCX = window.innerWidth / 2;
             const vpCY = window.innerHeight / 2;
-            const diffX = Math.abs(cx - vpCX);
-            const diffY = Math.abs(cy - vpCY);
+            const rawDiffX = Math.abs(rawCX - vpCX);
+            const rawDiffY = Math.abs(rawCY - vpCY);
 
-            // X snap
-            if (!snappedX && diffX < SNAP_DIST) {
+            // X snap: based on RAW mouse-driven position, not snapped position
+            if (!snappedX && rawDiffX < SNAP_DIST) {
                 snappedX = true;
-                snapOffsetX = vpCX - cx;
-                dragEl.style.left = (rawLeft + snapOffsetX) + 'px';
+                snapCorrectionX = vpCX - rawCX;
                 guideV.style.opacity = '1'; guideV.style.background = '#e74f00';
-            } else if (snappedX) {
-                if (diffX > SNAP_RELEASE) {
-                    snappedX = false; snapOffsetX = 0;
-                    guideV.style.opacity = '0.3'; guideV.style.background = '#ccc';
-                } else {
-                    dragEl.style.left = (rawLeft + snapOffsetX) + 'px';
-                }
-            } else {
+            } else if (snappedX && rawDiffX > SNAP_RELEASE) {
+                snappedX = false;
+                snapCorrectionX = 0;
                 guideV.style.opacity = '0.3'; guideV.style.background = '#ccc';
             }
 
             // Y snap
-            if (!snappedY && diffY < SNAP_DIST) {
+            if (!snappedY && rawDiffY < SNAP_DIST) {
                 snappedY = true;
-                snapOffsetY = vpCY - cy;
-                dragEl.style.top = (rawTop + snapOffsetY) + 'px';
+                snapCorrectionY = vpCY - rawCY;
                 guideH.style.opacity = '1'; guideH.style.background = '#e74f00';
-            } else if (snappedY) {
-                if (diffY > SNAP_RELEASE) {
-                    snappedY = false; snapOffsetY = 0;
-                    guideH.style.opacity = '0.3'; guideH.style.background = '#ccc';
-                } else {
-                    dragEl.style.top = (rawTop + snapOffsetY) + 'px';
-                }
-            } else {
+            } else if (snappedY && rawDiffY > SNAP_RELEASE) {
+                snappedY = false;
+                snapCorrectionY = 0;
                 guideH.style.opacity = '0.3'; guideH.style.background = '#ccc';
             }
+
+            if (!snappedX) { guideV.style.opacity = '0.3'; guideV.style.background = '#ccc'; }
+            if (!snappedY) { guideH.style.opacity = '0.3'; guideH.style.background = '#ccc'; }
+
+            dragEl.style.left = (elStartLeft + dx + snapCorrectionX) + 'px';
+            dragEl.style.top = (elStartTop + dy + snapCorrectionY) + 'px';
         });
 
         document.addEventListener('mouseup', () => {
