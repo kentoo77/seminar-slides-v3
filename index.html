@@ -2143,6 +2143,8 @@
         async function savePositions() {
             const data = collectPositions();
             setSaveStatus('保存中…');
+            // 常にlocalStorageに書く（フォールバック保証）
+            try { localStorage.setItem('slide-positions', JSON.stringify(data)); } catch { }
             try {
                 const r = await fetch('/api/positions', {
                     method: 'POST',
@@ -2153,10 +2155,12 @@
                     setSaveStatus('✓ 保存完了');
                     setTimeout(() => setSaveStatus(''), 3000);
                 } else {
-                    setSaveStatus('⚠ 保存失敗');
+                    setSaveStatus('✓ 保存完了(local)');
+                    setTimeout(() => setSaveStatus(''), 3000);
                 }
             } catch {
-                setSaveStatus('⚠ ネットワークエラー');
+                setSaveStatus('✓ 保存完了(local)');
+                setTimeout(() => setSaveStatus(''), 3000);
             }
         }
 
