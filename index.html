@@ -119,6 +119,13 @@
         .step-text { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; color: var(--text-primary); line-height: 1.4; }
         .step-arrow { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--accent); }
 
+        /* Example comparison (教科書 vs ネイティブ) */
+        .example-row { display: flex; flex-direction: column; align-items: center; gap: clamp(0.5rem, 1vh, 1rem); margin-top: clamp(2rem, 4vh, 4rem); }
+        .example-box { background: var(--bg-white); border-radius: var(--radius); padding: clamp(1.2rem, 2.5vw, 2rem) clamp(2rem, 5vw, 4rem); text-align: center; box-shadow: var(--shadow-card); min-width: 300px; }
+        .example-label { font-size: clamp(0.9rem, 1.3vw, 1.1rem); font-weight: 600; color: var(--text-tertiary); margin-bottom: 0.3rem; }
+        .example-text { font-size: clamp(1.5rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--text-primary); }
+        .example-arrow { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--text-tertiary); }
+
         /* Phase card images (inline) */
         .phase-card-img { max-height: clamp(180px, 32vh, 360px); border-radius: var(--radius); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); }
 
